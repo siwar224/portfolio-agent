@@ -20,6 +20,7 @@ cp .env.example .env   # then fill in ANTHROPIC_API_KEY (needed from V1)
 
 | Command | What it does |
 |---|---|
+| `npm run dev` | Local test playground on http://localhost:8787 (needs `ANTHROPIC_API_KEY` in `.env`) |
 | `npm run typecheck` | TypeScript check |
 | `npm run check:data` | Validates `data/*.json` (schemas, ids, cross-references) and lists what is still to fill in |
 | `npm run check` | Both of the above |
@@ -29,5 +30,8 @@ cp .env.example .env   # then fill in ANTHROPIC_API_KEY (needed from V1)
 ```
 data/            knowledge base and agent behaviour (JSON)
 src/data.ts      typed loader + schemas for data/
-scripts/         developer scripts (check-data, later: chat, eval)
+src/prompt.ts    system prompt built from data/
+src/agent.ts     Claude call (streaming, prompt caching, refusal fallback)
+scripts/         developer scripts (check-data, dev-server; later: eval)
+playground/      local test page (not deployed)
 ```

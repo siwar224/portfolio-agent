@@ -81,7 +81,7 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    V0["V0<br/>Foundations<br/>✅ done"]:::done --> V1["V1<br/>Grounded agent<br/>⚪ todo"]:::todo --> V2["V2<br/>Widget + deploy<br/>⚪ todo"]:::todo --> V3["V3<br/>Tracking<br/>⚪ todo"]:::todo --> V4["V4<br/>Insights<br/>⚪ todo"]:::todo --> V5["V5<br/>Actions<br/>⚪ todo"]:::todo
+    V0["V0<br/>Foundations<br/>✅ done"]:::done --> V1["V1<br/>Grounded agent<br/>🟡 in progress"]:::doing --> V2["V2<br/>Widget + deploy<br/>⚪ todo"]:::todo --> V3["V3<br/>Tracking<br/>⚪ todo"]:::todo --> V4["V4<br/>Insights<br/>⚪ todo"]:::todo --> V5["V5<br/>Actions<br/>⚪ todo"]:::todo
 
     classDef done fill:#bbf7d0,stroke:#15803d,color:#052e16
     classDef doing fill:#fde68a,stroke:#b45309,color:#3a2203
@@ -107,12 +107,13 @@ Goal: a clean, isolated project with reliable data.
 
 **Done when:** the project installs and type-checks with no code from the portfolio. ✅ `npm run check` passes.
 
-### V1 — Grounded agent (local) ⚪
+### V1 — Grounded agent (local) 🟡
 Goal: the agent answers recruiter questions correctly, from the terminal, before any UI.
 
-- [ ] **V1.1** `src/prompt.ts` — builds the system prompt from `data/*.json` + `agent.json`
-- [ ] **V1.2** `src/agent.ts` — calls Claude with streaming and prompt caching
-- [ ] **V1.3** `scripts/chat.ts` — local terminal chat to talk to the agent
+- [x] **V1.1** `src/prompt.ts` — builds the system prompt from `data/*.json` + `agent.json`
+- [x] **V1.2** `src/agent.ts` — calls Claude with streaming, prompt caching and refusal fallback
+- [x] **V1.3** Local test playground: `npm run dev` → `playground/index.html` (quick tests, token/cache stats, system prompt viewer)
+- [ ] **V1.3b** First real test session with an API key
 - [ ] **V1.4** Job-description matching: paste a job offer, get strengths with evidence and honest gaps
 - [ ] **V1.5** `evals/questions.jsonl` — 20–30 typical recruiter questions with expected facts
 - [ ] **V1.6** `scripts/eval.ts` — runs the questions and checks: no invented facts, English only, no salary figure
