@@ -58,14 +58,20 @@
   "key_numbers": {
     "professional_experiences": 5,
     "projects_shipped": "6+",
-    "payment_providers_integrated": 4,
+    "payment_providers_integrated": 5,
     "payment_providers_detail": [
-      "Tap Payments",
+      "Tap Payments (incl. Apple Pay)",
       "Tamara",
       "Tabby",
+      "Moyasar",
       "Stripe"
     ],
-    "engineering_degree_year": 2026
+    "engineering_degree_year": 2026,
+    "client_projects_in_production": [
+      "Bawsalah (bawsalah.com.sa)",
+      "Barea (barea.com.sa)"
+    ],
+    "automated_tests_written_at_tradrly": "about 480"
   },
   "education": [
     {

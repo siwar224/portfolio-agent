@@ -35,6 +35,9 @@ for (const e of k.experience) {
   if (e.portfolio_project_id && !projectIds.includes(e.portfolio_project_id)) {
     errors.push(`experience.json: "${e.id}" links to unknown project "${e.portfolio_project_id}"`);
   }
+  for (const id of e.project_ids ?? []) {
+    if (!projectIds.includes(id)) errors.push(`experience.json: "${e.id}" lists unknown project "${id}"`);
+  }
 }
 
 // Agent config must list every data file it relies on

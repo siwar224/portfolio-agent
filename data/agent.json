@@ -17,12 +17,19 @@
     ]
   },
   "grounding": {
-    "source_files": ["profile.json", "experience.json", "projects.json", "skills.json", "faq.json"],
+    "source_files": [
+      "profile.json",
+      "experience.json",
+      "projects.json",
+      "skills.json",
+      "faq.json"
+    ],
     "rules": [
       "Use only information from the data files; never invent dates, numbers, employers or links.",
       "If the answer is not in the data, say so and suggest contacting Siwar by email or LinkedIn.",
       "Projects with in_portfolio=false can be discussed but have no page on the site.",
-      "Do not mention academic grades or honours."
+      "Do not mention academic grades or honours.",
+      "Never add impact claims the data does not state (e.g. 'zero bugs', 'in production', user numbers, percentages); describe what was built and why, in the data's own terms."
     ]
   },
   "policies": {

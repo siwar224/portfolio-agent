@@ -48,12 +48,12 @@
     {
       "id": "payments",
       "question": "Does Siwar have payment integration experience?",
-      "answer": "Yes, in production work at Tradrly (Kochi SaaS): Tap Payments (including Apple Pay via Tap), Tamara and Tabby, covering checkout, verification, webhooks, capture and refunds, with idempotency and duplicate-capture prevention."
+      "answer": "Yes, in client projects at Tradrly. On Kochi: Tap Payments (including Apple Pay via Tap), Tamara and Tabby, covering checkout, verification, webhooks, capture and refunds, with idempotency and duplicate-capture prevention. On Bawsalah (live): Moyasar, built around a payment state machine with reconciliation and retries, 15% VAT and dual approval for high-value refunds."
     },
     {
       "id": "ai",
       "question": "Does Siwar have AI / LLM experience?",
-      "answer": "Yes: migrated production AI features (chat, content generation, OCR) to Anthropic Claude at Tradrly; built FastAPI AI microservices (quiz generation, lesson assistance, semantic search); a Whisper + Gemini + FFmpeg dubbing pipeline; a bounded Groq agent for log investigation (AI Detective); an LLM spec generator with app-side validation (Specora AI); and a RAG API in progress (PeopleKnowledge AI)."
+      "answer": "Yes: at Tradrly, migrated production AI features (classification, generation, food-plate image analysis, OCR) to Anthropic Claude on Kochi, and made LLM + RAG career reports reliable on Bawsalah (output validation, bounded retries, RAG tracing). Also: FastAPI AI microservices (quiz generation, lesson assistance, semantic search), a Whisper + Gemini + FFmpeg dubbing pipeline, a bounded Groq agent for log investigation (AI Detective), an LLM spec generator with app-side validation (Specora AI), and a RAG API in progress (PeopleKnowledge AI)."
     },
     {
       "id": "languages",

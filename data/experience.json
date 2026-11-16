@@ -5,38 +5,91 @@
   },
   "experience": [
     {
-      "id": "tradrly-kochi",
-      "title": "Software Engineer - Kochi SaaS Platform",
+      "id": "tradrly-se",
+      "title": "Software Engineer",
       "company": "Tradrly",
       "location": "Mahdia, Tunisia",
       "start": "2026-08",
-      "end": "2026-10",
+      "end": null,
+      "current": true,
       "type": "Full-time",
-      "product": "Kochi, an Arabic-first fitness coaching SaaS for the Saudi market, used by coaches and their clients",
+      "product": "Client projects for the Saudi market: Kochi (Arabic-first fitness coaching SaaS, delivered and used by coaches and their clients), Bawsalah (bilingual career-assessment platform, live at bawsalah.com.sa) and Barea (Arabic-first educational management platform, live at barea.com.sa). Bawsalah and Barea are in production and still under active development.",
+      "team": "Teams of 3-4 developers per project",
+      "contribution": "About 475 unique commits since Aug 2026: Kochi 139 (backend, React Native app, Python data services), Bawsalah about 261 (backend and frontend), Barea 76 (backend and frontend). About 480 automated test cases written across the three projects.",
       "stack": [
-        "Fastify",
         "TypeScript",
+        "JavaScript",
+        "Node.js",
+        "Fastify",
+        "Express",
         "MongoDB",
+        "Mongoose",
+        "React",
         "React Native",
         "Expo",
+        "Vite",
+        "Python",
         "Tap Payments",
+        "Apple Pay",
         "Tamara",
         "Tabby",
-        "Apple Pay",
-        "Anthropic Claude"
+        "Moyasar",
+        "Anthropic Claude",
+        "Gemini",
+        "RAG",
+        "Web Push",
+        "Jest",
+        "Vitest"
       ],
       "highlights_fullstack": [
-        "Developed full-stack features for an Arabic-first fitness coaching SaaS using Fastify, TypeScript, MongoDB and React Native/Expo, supporting client and coach workflows.",
-        "Integrated multiple payment providers (Tap, Tamara, Tabby) and Apple Pay via Tap: checkout, payment verification, capture and refund workflows.",
-        "Hardened transaction security and reliability with webhook validation, payment state management, idempotency safeguards and duplicate-capture prevention.",
-        "Implemented multi-currency pricing with SAR conversion, payment-time price snapshots, and configurable platform fees and taxes.",
-        "Migrated AI-powered features (chat, content generation, OCR) to Anthropic Claude with robust error handling, timeouts and retries."
+        "Kochi: built the payment module end to end (Tap cards, Apple Pay via Tap, Tamara and Tabby buy-now-pay-later) with HMAC-verified webhooks, atomic capture claims, idempotent refunds, multi-currency SAR pricing and price snapshots at payment time.",
+        "Kochi: migrated AI features from Gemini/Groq to Anthropic Claude (classification, generation, food-plate image analysis, InBody OCR) with timeouts, retries and defensive parsing of model output.",
+        "Bawsalah: designed the Moyasar payment architecture around an explicit payment state machine, with reconciliation and retry of pending checkouts, idempotency keys, integer amounts in halalas, 15% VAT handling and dual approval for high-value refunds.",
+        "Bawsalah: made AI-generated reports reliable: validation of the LLM's career recommendations with counted rule violations, automatic retries (up to 8 attempts), RAG response tracing and generation time tracking.",
+        "Bawsalah: built the admin side: a role-permission matrix enforced on backend routes, an 8-step acquisition funnel, payment health analytics with period comparison, intervention-case detection, audit logs, customer search, Excel/CSV exports and test-account isolation.",
+        "Barea: built a pipeline that converts legacy curriculum content into structured blocks, with a production migration designed to be safe: dry-run mode, difference classification, a safety gate and a rollback script that refuses to write without explicit confirmation and a confirmed backup.",
+        "Barea: delivered web push notifications end to end (VAPID, subscription API, service worker, automatic registration after login).",
+        "Wrote about 480 automated test cases across the three projects (Jest and Vitest)."
       ],
       "highlights_devops": [
-        "Implemented secure payment workflows covering checkout, verification, webhooks, captures and refunds, with transaction tracking and idempotency safeguards."
+        "Payment reliability: HMAC and timing-safe webhook verification, idempotency keys, atomic capture claims, a payment state machine, and reconciliation/retry of pending checkouts.",
+        "Safe production data migration on Barea: dry-run, difference classification, safety gate, rollback script gated on explicit confirmation and backup.",
+        "Security hardening on Bawsalah: role-permission matrix on backend routes, httpOnly session and refresh cookies, rate limiting on sensitive routes, email verification.",
+        "Resilient integrations: exchange-rate caching with fallback, AI calls with timeouts and bounded retries.",
+        "About 480 automated test cases written (Jest, Vitest), including an isolated test database on Barea."
+      ],
+      "stories": [
+        {
+          "title": "Kochi: The double-capture race",
+          "situation": "A Tabby payment could be confirmed by two paths at the same time: the provider's webhook and the app polling for the result. Both could try to capture the same payment.",
+          "action": "Siwar added an atomic capture claim in MongoDB (findOneAndUpdate on the payment's state), so only one path can claim the capture; the other logs it and skips safely. Refunds got idempotency keys and late webhooks on finished payments are ignored.",
+          "result": "Only one path can capture a given payment, whichever arrives first; the other skips safely."
+        },
+        {
+          "title": "Kochi: Exchange-rate provider outage",
+          "situation": "Package prices are shown and charged in SAR, converted from 9 currencies through an external exchange-rate provider. If the provider failed, checkout would break.",
+          "action": "Siwar built an exchange-rate service with caching: fresh rates are reused, and when the provider fails it falls back to the last cached rate, marks the source as a fallback and logs it. Prices are also frozen into the contract at payment time.",
+          "result": "Payments keep working during provider outages, and every charge keeps the exact price the client agreed to."
+        },
+        {
+          "title": "Barea: Migrating live curriculum content without breaking it",
+          "situation": "Barea's curriculum content was stored in a legacy text format and had to be converted into structured blocks while the platform was live in production.",
+          "action": "Siwar built the converter with a dry-run mode, a comparison step that classifies and explains every difference between old and new content, a safety gate shared by migration, editing and Excel import, review flags for blocks needing a human check, and a rollback script that refuses to write without --confirm-rollback and --backup-confirmed.",
+          "result": "The migration can be previewed, reviewed and reversed before and after it touches production data."
+        },
+        {
+          "title": "Bawsalah: Making AI-generated reports dependable",
+          "situation": "Bawsalah generates a career report with an LLM and RAG; model output could break the expected structure or fail transiently.",
+          "action": "Siwar added validation of the career recommendations against the expected sections and format, counting each rule violation, plus automatic retries capped at 8 attempts that stop early on non-retryable errors, and tracing of RAG responses and generation time.",
+          "result": "Invalid reports are detected and regenerated instead of being delivered, and failures are visible to the team."
+        }
       ],
       "portfolio_project_id": null,
-      "delivery": "Delivered to the client and in use by coaches and clients"
+      "project_ids": [
+        "kochi",
+        "bawsalah",
+        "barea"
+      ]
     },
     {
       "id": "tradrly-pfe",

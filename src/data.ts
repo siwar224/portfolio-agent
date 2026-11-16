@@ -55,13 +55,20 @@ export const ExperienceSchema = z.object({
       location: str,
       start: z.string().regex(/^\d{4}-\d{2}$/),
       end: z.string().regex(/^\d{4}-\d{2}$/).nullable(),
+      current: z.boolean().optional(),
       type: str,
       product: str,
       delivery: str.optional(),
+      team: str.optional(),
+      contribution: str.optional(),
       stack: strList,
       highlights_fullstack: strList,
       highlights_devops: strList,
+      stories: z
+        .array(z.object({ title: str, situation: str, action: str, result: str }))
+        .optional(),
       portfolio_project_id: str.nullable(),
+      project_ids: strList.optional(),
     }),
   ),
 });

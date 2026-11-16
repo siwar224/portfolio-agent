@@ -16,13 +16,15 @@
             "zad-ezzaytouni",
             "youdube",
             "pulse-hr",
-            "startnow-2023"
+            "startnow-2023",
+            "bawsalah",
+            "barea"
           ]
         },
         {
           "name": "React Native (Expo)",
           "evidence": [
-            "tradrly-kochi",
+            "kochi",
             "khidma"
           ]
         },
@@ -36,10 +38,12 @@
         {
           "name": "TypeScript",
           "evidence": [
-            "tradrly-kochi",
+            "kochi",
             "khidma",
             "velor",
-            "pulse-hr"
+            "pulse-hr",
+            "bawsalah",
+            "barea"
           ]
         },
         {
@@ -92,7 +96,22 @@
           "name": "LTR/RTL multilingual UI",
           "evidence": [
             "youdube",
-            "tradrly-kochi"
+            "kochi"
+          ]
+        },
+        {
+          "name": "Arabic-first UX and localized validation",
+          "evidence": [
+            "kochi",
+            "youdube",
+            "bawsalah",
+            "barea"
+          ]
+        },
+        {
+          "name": "Web push notifications (VAPID, service workers)",
+          "evidence": [
+            "barea"
           ]
         }
       ]
@@ -104,16 +123,18 @@
         {
           "name": "Node.js",
           "evidence": [
-            "tradrly-kochi",
+            "kochi",
             "khidma",
             "zad-ezzaytouni",
-            "youdube"
+            "youdube",
+            "bawsalah",
+            "barea"
           ]
         },
         {
           "name": "Fastify",
           "evidence": [
-            "tradrly-kochi",
+            "kochi",
             "khidma"
           ]
         },
@@ -122,7 +143,9 @@
           "evidence": [
             "zad-ezzaytouni",
             "youdube",
-            "startnow-2023"
+            "startnow-2023",
+            "bawsalah",
+            "barea"
           ]
         },
         {
@@ -131,7 +154,10 @@
             "khidma",
             "zad-ezzaytouni",
             "youdube",
-            "pulse-hr"
+            "pulse-hr",
+            "kochi",
+            "bawsalah",
+            "barea"
           ]
         },
         {
@@ -180,6 +206,24 @@
           "evidence": [
             "khidma"
           ]
+        },
+        {
+          "name": "Resilient third-party integrations (caching, fallbacks, scheduled refresh)",
+          "evidence": [
+            "kochi"
+          ]
+        },
+        {
+          "name": "Data migration with dry-run, safety gate and rollback",
+          "evidence": [
+            "barea"
+          ]
+        },
+        {
+          "name": "Email automation (scheduled reminders, tracking, unsubscribe)",
+          "evidence": [
+            "bawsalah"
+          ]
         }
       ]
     },
@@ -200,7 +244,9 @@
           "evidence": [
             "khidma",
             "zad-ezzaytouni",
-            "ecoevents"
+            "ecoevents",
+            "bawsalah",
+            "barea"
           ]
         },
         {
@@ -219,32 +265,33 @@
         {
           "name": "Webhooks + signature validation",
           "evidence": [
-            "tradrly-kochi"
+            "kochi"
           ]
         },
         {
           "name": "Idempotency / duplicate-capture prevention",
           "evidence": [
-            "tradrly-kochi",
-            "velor"
+            "kochi",
+            "velor",
+            "bawsalah"
           ]
         },
         {
           "name": "Tap Payments (incl. Apple Pay)",
           "evidence": [
-            "tradrly-kochi"
+            "kochi"
           ]
         },
         {
-          "name": "Tamara",
+          "name": "Tamara (buy now, pay later)",
           "evidence": [
-            "tradrly-kochi"
+            "kochi"
           ]
         },
         {
-          "name": "Tabby",
+          "name": "Tabby (buy now, pay later)",
           "evidence": [
-            "tradrly-kochi"
+            "kochi"
           ]
         },
         {
@@ -254,7 +301,31 @@
         {
           "name": "Multi-currency pricing (SAR), fees and taxes",
           "evidence": [
-            "tradrly-kochi"
+            "kochi"
+          ]
+        },
+        {
+          "name": "Moyasar",
+          "evidence": [
+            "bawsalah"
+          ]
+        },
+        {
+          "name": "Payment state machine, reconciliation and retries",
+          "evidence": [
+            "bawsalah"
+          ]
+        },
+        {
+          "name": "Refund dual approval and VAT handling",
+          "evidence": [
+            "bawsalah"
+          ]
+        },
+        {
+          "name": "httpOnly cookies, rate limiting, email verification",
+          "evidence": [
+            "bawsalah"
           ]
         }
       ]
@@ -264,9 +335,9 @@
       "label": "AI & LLM integration",
       "skills": [
         {
-          "name": "Anthropic Claude (chat, content generation, OCR)",
+          "name": "Anthropic Claude (text + vision: classification, generation, image analysis, OCR)",
           "evidence": [
-            "tradrly-kochi"
+            "kochi"
           ]
         },
         {
@@ -297,7 +368,8 @@
           "name": "RAG / semantic search",
           "evidence": [
             "zad-ezzaytouni",
-            "peopleknowledge-ai"
+            "peopleknowledge-ai",
+            "bawsalah"
           ]
         },
         {
@@ -309,9 +381,16 @@
         {
           "name": "Reliability: timeouts, retries, error handling, output validation",
           "evidence": [
-            "tradrly-kochi",
+            "kochi",
             "specora-ai",
             "ai-detective"
+          ]
+        },
+        {
+          "name": "LLM output validation with bounded retries",
+          "evidence": [
+            "bawsalah",
+            "kochi"
           ]
         }
       ]
@@ -324,9 +403,11 @@
           "name": "MongoDB / Mongoose (incl. transactions)",
           "evidence": [
             "khidma",
-            "tradrly-kochi",
+            "kochi",
             "zad-ezzaytouni",
-            "youdube"
+            "youdube",
+            "bawsalah",
+            "barea"
           ]
         },
         {
@@ -343,9 +424,12 @@
           ]
         },
         {
-          "name": "Vitest + MongoDB Memory Server",
+          "name": "Vitest (+ MongoDB Memory Server on Khidma)",
           "evidence": [
-            "khidma"
+            "khidma",
+            "kochi",
+            "bawsalah",
+            "barea"
           ]
         },
         {
@@ -371,6 +455,18 @@
         {
           "name": "Postman",
           "evidence": []
+        },
+        {
+          "name": "Jest",
+          "evidence": [
+            "bawsalah"
+          ]
+        },
+        {
+          "name": "Admin analytics (funnels, KPIs, exports)",
+          "evidence": [
+            "bawsalah"
+          ]
         }
       ]
     },
@@ -468,7 +564,7 @@
         {
           "name": "TypeScript",
           "evidence": [
-            "tradrly-kochi",
+            "kochi",
             "khidma",
             "velor"
           ]
@@ -480,7 +576,8 @@
             "specora-ai",
             "cimaseat",
             "peopleknowledge-ai",
-            "youdube"
+            "youdube",
+            "kochi"
           ]
         },
         {

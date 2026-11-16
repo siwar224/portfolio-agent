@@ -11,6 +11,195 @@
   },
   "projects": [
     {
+      "featured": false,
+      "in_portfolio": false,
+      "problem": null,
+      "solution": null,
+      "workflow": null,
+      "results": [],
+      "portfolio": {
+        "page": null,
+        "anchor": null
+      },
+      "id": "kochi",
+      "name": "Kochi - Fitness Coaching SaaS (Tradrly client project)",
+      "category": [
+        "Full Stack",
+        "Mobile",
+        "Payments",
+        "AI"
+      ],
+      "status": "Delivered to the client and used by coaches and their clients",
+      "period": "Aug 2026 - Oct 2026",
+      "context": "Client project at Tradrly for the Saudi market, team of 3-4 developers. Siwar's own work: 139 commits (backend, React Native app, Python data services).",
+      "pitch": "Arabic-first fitness coaching SaaS connecting coaches and their clients, with paid coaching packages.",
+      "role": "Owned the payment module and the AI migration, and built several full-stack features (announcements, withdrawals, Arabic validation UX).",
+      "highlights": [
+        "Built the payment module end to end for paid coaching packages: card payments and Apple Pay via Tap, and buy-now-pay-later with Tamara and Tabby, covering checkout, in-app checkout screens, verification, capture, refunds and admin payment routes (Fastify/TypeScript backend + React Native/Expo app).",
+        "Secured payment webhooks with HMAC-SHA256 signature verification and constant-time comparison (timingSafeEqual); invalid signatures are rejected with 403.",
+        "Prevented double charges and duplicate side effects: an atomic capture claim (MongoDB findOneAndUpdate) stops the webhook and the app's polling from capturing the same Tabby payment twice; refunds use idempotency keys; late webhooks on terminal payments are ignored; a 409 blocks a second active subscription or a second payment in progress.",
+        "Implemented multi-currency pricing: 9 currencies with SAR conversion, an exchange-rate service with caching and a fallback to the last known rate when the provider fails, a price snapshot frozen into the training contract at payment time, a minimum price in SAR, a scheduled SAR price refresh guarded against overlapping runs, and a backfill script for existing packages.",
+        "Made the platform tax rate configurable with effective dates and conflict checks, applied to package payments.",
+        "Built coach earnings withdrawals (coach request flow and admin management) with MongoDB transactions to keep balances consistent and conflict checks against duplicate requests.",
+        "Migrated the AI features from Gemini/Groq to Anthropic Claude in the Node backend and the Python data services: chat topic classification, meal generation, food-plate photo analysis and InBody report OCR (Claude vision), with request timeouts, retries and defensive parsing of the model's JSON output.",
+        "Delivered an Arabic-first UX: backend validation errors normalized into Arabic and field-level Arabic error feedback wired across the whole app, with global error toasts.",
+        "Built coach broadcast announcements full stack: API, coach history, an unread section on the client dashboard and opening announcements from notifications.",
+        "Implemented role-based navigation (coach vs client route guards, onboarding-state routing), coach availability and invite codes, Expo Web compatibility for native-only modules, and responsive screens aligned with the Figma designs.",
+        "Wrote 46 Vitest test cases covering payments (Tap, Tamara, Tabby), pricing, exchange rates and validation."
+      ],
+      "stack": [
+        "Fastify",
+        "TypeScript",
+        "Node.js",
+        "MongoDB",
+        "Mongoose",
+        "React Native",
+        "Expo",
+        "Expo Web",
+        "Tap Payments",
+        "Apple Pay",
+        "Tamara",
+        "Tabby",
+        "Anthropic Claude (text + vision)",
+        "Python",
+        "Vitest"
+      ],
+      "links": {
+        "demo": null,
+        "repo": null,
+        "_note": "Private client codebase: no public links."
+      },
+      "good_for_roles": [
+        "Full-Stack",
+        "Backend Node.js",
+        "React Native",
+        "Payments",
+        "AI Engineer"
+      ]
+    },
+    {
+      "featured": false,
+      "in_portfolio": false,
+      "problem": null,
+      "solution": null,
+      "workflow": null,
+      "results": [],
+      "portfolio": {
+        "page": null,
+        "anchor": null
+      },
+      "id": "bawsalah",
+      "name": "Bawsalah - Career Assessment Platform (Tradrly client project)",
+      "category": [
+        "Full Stack",
+        "Payments",
+        "AI",
+        "Analytics"
+      ],
+      "status": "Live in production and under active development",
+      "period": "Oct 2026 - present",
+      "context": "Client project at Tradrly for the Saudi market, team of 3-4 developers. Siwar's own work: about 261 unique commits (97 backend, 164 frontend).",
+      "pitch": "Bilingual (Arabic/English) Holland/RIASEC career-assessment platform: users buy a package, take the assessment and receive an AI-generated report (LLM + RAG); staff run the business from an admin dashboard.",
+      "role": "Built payments, security, AI report reliability, admin analytics and large parts of the bilingual frontend.",
+      "highlights": [
+        "Designed the Moyasar payment architecture: an explicit payment state machine (only allowed transitions), hosted checkout, protected checkout-return sessions, idempotency keys, timing-safe verification of the webhook secret, integer amounts in halalas, and reconciliation and retry of pending checkouts.",
+        "Implemented refunds with dual approval: above a configurable amount, a second admin must approve before the refund proceeds.",
+        "Added 15% VAT handling and gross vs net revenue calculations.",
+        "Secured the platform: a role-permission matrix enforced on backend routes, session and refresh tokens in httpOnly cookies, rate limiting on password reset and admin exports, email verification at registration and a password-reset flow.",
+        "Made AI-generated reports reliable: validation of the LLM's career recommendations with counted rule violations, automatic retries up to 8 attempts (stopping early on non-retryable errors), RAG response tracing, and generation time and attempt tracking.",
+        "Built admin analytics: an 8-step acquisition funnel, payment health with period comparison, intervention-case detection, audit logs with filters, global customer search, Excel/CSV exports, and test-account isolation with a 'Hide test data' toggle.",
+        "Built email automation: scheduled reminders, an open-tracking pixel, unsubscribe links, links that resume exactly where the user stopped, and configurable alerts such as payment failures.",
+        "Built a guest assessment flow: take the test without an account, then claim it after signing up, with active-time tracking.",
+        "Frontend: bilingual RTL/LTR landing page redesign, the assessment experience and the admin dashboard, with lazy-loaded routes.",
+        "Wrote about 253 automated test cases (166 backend with Jest, 87 frontend with Vitest)."
+      ],
+      "stack": [
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Mongoose",
+        "Jest",
+        "React 18",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "Vitest",
+        "Moyasar",
+        "Gemini",
+        "RAG",
+        "express-rate-limit"
+      ],
+      "links": {
+        "demo": "https://bawsalah.com.sa",
+        "repo": null,
+        "_note": "Private client codebase: only the public website can be shared."
+      },
+      "good_for_roles": [
+        "Full-Stack",
+        "Backend Node.js",
+        "Payments",
+        "AI Engineer",
+        "Frontend"
+      ]
+    },
+    {
+      "featured": false,
+      "in_portfolio": false,
+      "problem": null,
+      "solution": null,
+      "workflow": null,
+      "results": [],
+      "portfolio": {
+        "page": null,
+        "anchor": null
+      },
+      "id": "barea",
+      "name": "Barea - Educational Management Platform (Tradrly client project)",
+      "category": [
+        "Full Stack",
+        "Education",
+        "Data migration"
+      ],
+      "status": "Live in production and under active development",
+      "period": "Sep 2026 - present",
+      "context": "Client project at Tradrly for the Saudi market, team of 3-4 developers. Siwar's own work: 76 commits (25 backend, 51 frontend).",
+      "pitch": "Arabic-first educational management platform for institutions, curriculum content, activity plans, teachers, students and parents.",
+      "role": "Built the curriculum-content migration pipeline and knowledge reader, web push notifications, and user-management and curriculum screens.",
+      "highlights": [
+        "Built a pipeline that converts legacy curriculum content into structured blocks (BLOCKS_V1): a legacy converter (parser up to v9), semantic parsing of PDF content, and validation and normalization services.",
+        "Designed the production migration to be safe: dry-run mode, automatic classification and explanation of content differences, a safety gate shared with editing and Excel import, review flags for blocks needing a human check, and a rollback script that refuses to write without --confirm-rollback and --backup-confirmed.",
+        "Built the knowledge reader: chapter navigation, reading progress, table of contents and print mode.",
+        "Delivered web push notifications end to end: VAPID configuration, subscription model and API, service worker, automatic registration after login and retry after permission is granted.",
+        "Redesigned user management: merged 4 separate edit dialogs into one shared account form (about 1,300 lines removed), a multi-step form to add teachers, and parent accounts linked to their children.",
+        "Built curriculum management screens: a standards tree with preview and version history with filters.",
+        "Wrote about 183 automated test cases (133 backend, 50 frontend), with an isolated test database."
+      ],
+      "stack": [
+        "Node.js",
+        "Express 5",
+        "MongoDB",
+        "Mongoose",
+        "React 19",
+        "TypeScript",
+        "Vite",
+        "Zustand",
+        "Web Push (VAPID)",
+        "Service Workers",
+        "Vitest"
+      ],
+      "links": {
+        "demo": "https://barea.com.sa",
+        "repo": null,
+        "_note": "Private client codebase: only the public website can be shared."
+      },
+      "good_for_roles": [
+        "Full-Stack",
+        "Backend Node.js",
+        "Frontend React"
+      ]
+    },
+    {
       "id": "khidma",
       "name": "Khidma - Service Marketplace Platform",
       "category": [
