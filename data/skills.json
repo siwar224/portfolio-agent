@@ -1,0 +1,509 @@
+{
+  "_meta": {
+    "purpose": "Skills grouped by area, each linked to the projects/experiences that prove it (ids from projects.json and experience.json). The agent should cite evidence, not just list technologies.",
+    "last_updated": "2026-11-16"
+  },
+  "groups": [
+    {
+      "id": "frontend-mobile",
+      "label": "Frontend & Mobile",
+      "skills": [
+        {
+          "name": "React",
+          "evidence": [
+            "khidma",
+            "velor",
+            "zad-ezzaytouni",
+            "youdube",
+            "pulse-hr",
+            "startnow-2023"
+          ]
+        },
+        {
+          "name": "React Native (Expo)",
+          "evidence": [
+            "tradrly-kochi",
+            "khidma"
+          ]
+        },
+        {
+          "name": "Next.js",
+          "evidence": [
+            "velor",
+            "pulse-hr"
+          ]
+        },
+        {
+          "name": "TypeScript",
+          "evidence": [
+            "tradrly-kochi",
+            "khidma",
+            "velor",
+            "pulse-hr"
+          ]
+        },
+        {
+          "name": "Redux Toolkit / React Query / TanStack Query / Zustand",
+          "evidence": [
+            "pulse-hr",
+            "velor",
+            "startnow-2023"
+          ]
+        },
+        {
+          "name": "Tailwind CSS",
+          "evidence": [
+            "velor",
+            "zad-ezzaytouni",
+            "youdube",
+            "ecoevents"
+          ]
+        },
+        {
+          "name": "Material UI / shadcn/ui",
+          "evidence": [
+            "pulse-hr",
+            "youdube",
+            "velor"
+          ]
+        },
+        {
+          "name": "Vite",
+          "evidence": [
+            "khidma",
+            "zad-ezzaytouni",
+            "youdube",
+            "ai-detective"
+          ]
+        },
+        {
+          "name": "GSAP / ScrollTrigger / motion",
+          "evidence": [
+            "velor"
+          ]
+        },
+        {
+          "name": "Accessibility (WCAG 2.1 AA)",
+          "evidence": [
+            "velor"
+          ]
+        },
+        {
+          "name": "LTR/RTL multilingual UI",
+          "evidence": [
+            "youdube",
+            "tradrly-kochi"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "backend-apis",
+      "label": "Backend & APIs",
+      "skills": [
+        {
+          "name": "Node.js",
+          "evidence": [
+            "tradrly-kochi",
+            "khidma",
+            "zad-ezzaytouni",
+            "youdube"
+          ]
+        },
+        {
+          "name": "Fastify",
+          "evidence": [
+            "tradrly-kochi",
+            "khidma"
+          ]
+        },
+        {
+          "name": "Express.js",
+          "evidence": [
+            "zad-ezzaytouni",
+            "youdube",
+            "startnow-2023"
+          ]
+        },
+        {
+          "name": "REST API design",
+          "evidence": [
+            "khidma",
+            "zad-ezzaytouni",
+            "youdube",
+            "pulse-hr"
+          ]
+        },
+        {
+          "name": "Socket.IO (real-time)",
+          "evidence": [
+            "khidma"
+          ]
+        },
+        {
+          "name": "FastAPI",
+          "evidence": [
+            "zad-ezzaytouni",
+            "ai-detective",
+            "specora-ai",
+            "peopleknowledge-ai"
+          ]
+        },
+        {
+          "name": "Flask",
+          "evidence": [
+            "youdube"
+          ]
+        },
+        {
+          "name": "Laravel",
+          "evidence": [
+            "pulse-hr",
+            "ecoevents"
+          ]
+        },
+        {
+          "name": "Spring Boot",
+          "evidence": [
+            "devops-pipeline"
+          ]
+        },
+        {
+          "name": "Microservices",
+          "evidence": [
+            "zad-ezzaytouni",
+            "youdube"
+          ]
+        },
+        {
+          "name": "Swagger / OpenAPI",
+          "evidence": [
+            "khidma"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "security-payments",
+      "label": "Security & Payments",
+      "skills": [
+        {
+          "name": "JWT (access + refresh tokens)",
+          "evidence": [
+            "khidma",
+            "zad-ezzaytouni",
+            "youdube"
+          ]
+        },
+        {
+          "name": "RBAC",
+          "evidence": [
+            "khidma",
+            "zad-ezzaytouni",
+            "ecoevents"
+          ]
+        },
+        {
+          "name": "Email OTP verification",
+          "evidence": [
+            "khidma"
+          ]
+        },
+        {
+          "name": "Zod validation",
+          "evidence": [
+            "khidma",
+            "velor"
+          ]
+        },
+        {
+          "name": "Webhooks + signature validation",
+          "evidence": [
+            "tradrly-kochi"
+          ]
+        },
+        {
+          "name": "Idempotency / duplicate-capture prevention",
+          "evidence": [
+            "tradrly-kochi",
+            "velor"
+          ]
+        },
+        {
+          "name": "Tap Payments (incl. Apple Pay)",
+          "evidence": [
+            "tradrly-kochi"
+          ]
+        },
+        {
+          "name": "Tamara",
+          "evidence": [
+            "tradrly-kochi"
+          ]
+        },
+        {
+          "name": "Tabby",
+          "evidence": [
+            "tradrly-kochi"
+          ]
+        },
+        {
+          "name": "Stripe",
+          "evidence": []
+        },
+        {
+          "name": "Multi-currency pricing (SAR), fees and taxes",
+          "evidence": [
+            "tradrly-kochi"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ai",
+      "label": "AI & LLM integration",
+      "skills": [
+        {
+          "name": "Anthropic Claude (chat, content generation, OCR)",
+          "evidence": [
+            "tradrly-kochi"
+          ]
+        },
+        {
+          "name": "Gemini",
+          "evidence": [
+            "youdube"
+          ]
+        },
+        {
+          "name": "Whisper (speech-to-text)",
+          "evidence": [
+            "youdube"
+          ]
+        },
+        {
+          "name": "Groq tool-calling / bounded agents",
+          "evidence": [
+            "ai-detective"
+          ]
+        },
+        {
+          "name": "OpenAI-compatible / local LLMs",
+          "evidence": [
+            "specora-ai"
+          ]
+        },
+        {
+          "name": "RAG / semantic search",
+          "evidence": [
+            "zad-ezzaytouni",
+            "peopleknowledge-ai"
+          ]
+        },
+        {
+          "name": "AI microservices (quiz generation, lesson assistance)",
+          "evidence": [
+            "zad-ezzaytouni"
+          ]
+        },
+        {
+          "name": "Reliability: timeouts, retries, error handling, output validation",
+          "evidence": [
+            "tradrly-kochi",
+            "specora-ai",
+            "ai-detective"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data-testing",
+      "label": "Data & Testing",
+      "skills": [
+        {
+          "name": "MongoDB / Mongoose (incl. transactions)",
+          "evidence": [
+            "khidma",
+            "tradrly-kochi",
+            "zad-ezzaytouni",
+            "youdube"
+          ]
+        },
+        {
+          "name": "MySQL",
+          "evidence": [
+            "pulse-hr",
+            "ecoevents"
+          ]
+        },
+        {
+          "name": "SQL Server",
+          "evidence": [
+            "startnow-2023"
+          ]
+        },
+        {
+          "name": "Vitest + MongoDB Memory Server",
+          "evidence": [
+            "khidma"
+          ]
+        },
+        {
+          "name": "JUnit / Mockito",
+          "evidence": [
+            "devops-pipeline"
+          ]
+        },
+        {
+          "name": "pytest / unittest",
+          "evidence": [
+            "ai-detective",
+            "cimaseat",
+            "peopleknowledge-ai"
+          ]
+        },
+        {
+          "name": "Playwright + axe-core, Lighthouse",
+          "evidence": [
+            "velor"
+          ]
+        },
+        {
+          "name": "Postman",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "id": "devops",
+      "label": "DevOps, CI/CD & Monitoring",
+      "skills": [
+        {
+          "name": "GitHub Actions",
+          "evidence": [
+            "khidma",
+            "zad-ezzaytouni"
+          ]
+        },
+        {
+          "name": "Jenkins",
+          "evidence": [
+            "devops-pipeline"
+          ]
+        },
+        {
+          "name": "Docker / Docker Compose",
+          "evidence": [
+            "khidma",
+            "zad-ezzaytouni",
+            "ecoevents",
+            "devops-pipeline"
+          ]
+        },
+        {
+          "name": "GitHub Container Registry (GHCR)",
+          "evidence": [
+            "khidma"
+          ]
+        },
+        {
+          "name": "Nexus",
+          "evidence": [
+            "devops-pipeline"
+          ]
+        },
+        {
+          "name": "SonarQube",
+          "evidence": [
+            "devops-pipeline",
+            "ecoevents"
+          ]
+        },
+        {
+          "name": "Prometheus / Grafana",
+          "evidence": [
+            "devops-pipeline",
+            "ecoevents"
+          ]
+        },
+        {
+          "name": "Nginx",
+          "evidence": [
+            "khidma"
+          ]
+        },
+        {
+          "name": "ESLint, npm audit",
+          "evidence": [
+            "khidma"
+          ]
+        },
+        {
+          "name": "Linux (Ubuntu / WSL)",
+          "evidence": [
+            "devops-pipeline"
+          ]
+        },
+        {
+          "name": "Vercel",
+          "evidence": [
+            "velor",
+            "portfolio-site"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "languages",
+      "label": "Programming languages",
+      "skills": [
+        {
+          "name": "JavaScript",
+          "evidence": [
+            "zad-ezzaytouni",
+            "youdube",
+            "ai-detective"
+          ]
+        },
+        {
+          "name": "TypeScript",
+          "evidence": [
+            "tradrly-kochi",
+            "khidma",
+            "velor"
+          ]
+        },
+        {
+          "name": "Python",
+          "evidence": [
+            "ai-detective",
+            "specora-ai",
+            "cimaseat",
+            "peopleknowledge-ai",
+            "youdube"
+          ]
+        },
+        {
+          "name": "Java",
+          "evidence": [
+            "devops-pipeline"
+          ]
+        },
+        {
+          "name": "PHP",
+          "evidence": [
+            "pulse-hr",
+            "ecoevents"
+          ]
+        },
+        {
+          "name": "SQL",
+          "evidence": [
+            "pulse-hr",
+            "startnow-2023"
+          ]
+        }
+      ]
+    }
+  ]
+}

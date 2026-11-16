@@ -1,0 +1,24 @@
+{
+  "name": "portfolio-agent",
+  "version": "0.0.0",
+  "private": true,
+  "description": "AI agent that presents Siwar M'SALLEM's profile to recruiters.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "check:data": "tsx scripts/check-data.ts",
+    "check": "npm run typecheck && npm run check:data"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,695 @@
+{
+  "_meta": {
+    "purpose": "Every project the agent may talk about. 'in_portfolio' says whether a page/card exists on the site; projects with in_portfolio=false come from the CV or GitHub only, so the agent must not try to scroll to them.",
+    "fields": {
+      "role": "What Siwar personally did. Keep it honest: the agent quotes it.",
+      "results": "Concrete outcomes. Empty array = nothing measurable stated yet; the agent must not invent numbers.",
+      "portfolio.page": "Case study page on the site, if any.",
+      "portfolio.anchor": "DOM id the agent can scroll to. null for now: project cards in index.html have no ids yet."
+    },
+    "last_updated": "2026-11-16"
+  },
+  "projects": [
+    {
+      "id": "khidma",
+      "name": "Khidma - Service Marketplace Platform",
+      "category": [
+        "Full Stack",
+        "Web + Mobile",
+        "Marketplace"
+      ],
+      "featured": true,
+      "in_portfolio": true,
+      "period": "Aug 2026 - present",
+      "context": "Personal project, published on GitHub as separate frontend, backend and mobile repositories",
+      "pitch": "Tunisian home-services marketplace: clients describe a need, compare proposals from verified professionals, and follow the intervention from booking to completion.",
+      "problem": "Finding a reliable home-service professional is fragmented and hard to coordinate from the first request to the final intervention.",
+      "solution": "One platform centralizing service discovery, client requests, professional proposals, appointment tracking, notifications and private conversations.",
+      "workflow": [
+        "Publish a service request",
+        "Receive professional proposals",
+        "Select the right professional",
+        "Confirm and track the appointment",
+        "Complete the intervention"
+      ],
+      "role": "Designed and built end to end: React/TypeScript web app, React Native/Expo mobile app, modular Fastify API, MongoDB data model and CI/CD.",
+      "highlights": [
+        "Client, professional and admin roles with JWT access + refresh tokens, email OTP verification, password reset and refresh-token revocation.",
+        "MongoDB transactions accept a proposal atomically and prevent duplicate professional assignments.",
+        "Persisted real-time notifications with Socket.IO and private Stream Chat conversations linked to requests and proposals.",
+        "Privacy by design: exact addresses and contact details stay hidden until the appointment is confirmed; access is controlled by role and business status.",
+        "GitHub Actions CI for the mobile app: ESLint, TypeScript validation, Expo Web build and dependency security audit (npm audit).",
+        "Automated Docker image builds published to GitHub Container Registry (GHCR), with Nginx serving the Expo Web app.",
+        "Tested with Vitest and MongoDB Memory Server; API documented with Swagger/OpenAPI."
+      ],
+      "stack": [
+        "React",
+        "TypeScript",
+        "Vite",
+        "React Native",
+        "Expo",
+        "Fastify",
+        "Node.js",
+        "MongoDB",
+        "Mongoose",
+        "Zod",
+        "JWT",
+        "Bcrypt",
+        "Nodemailer/SMTP",
+        "Socket.IO",
+        "Stream Chat",
+        "Swagger/OpenAPI",
+        "Vitest",
+        "MongoDB Memory Server",
+        "GitHub Actions",
+        "Docker",
+        "GHCR",
+        "Nginx"
+      ],
+      "results": [],
+      "links": {
+        "demo": null,
+        "repo": null,
+        "video": null,
+        "_note": "Repositories (frontend, backend, mobile) are private for now: do not share repository links; say the code can be discussed with Siwar."
+      },
+      "portfolio": {
+        "page": "khedma.html",
+        "anchor": null
+      },
+      "good_for_roles": [
+        "Full-Stack",
+        "Backend Node.js",
+        "React Native",
+        "CI/CD"
+      ],
+      "status": "Not deployed yet; public launch coming soon"
+    },
+    {
+      "id": "velor",
+      "name": "VELOR - Cinematic Cafe Site & Dashboard",
+      "category": [
+        "Frontend",
+        "Motion",
+        "Dashboard"
+      ],
+      "featured": true,
+      "in_portfolio": true,
+      "period": null,
+      "context": "Solo frontend project",
+      "pitch": "Scroll-driven brand site for a fictional Paris coffee bar (Velvet Cold Coffee), paired with an admin dashboard for orders, menu and opening hours, synced live through a typed mock REST API.",
+      "problem": "Build a brand experience that feels like a film, scrubbing a 267-frame video as you scroll, without giving up performance, accessibility or real content in the HTML.",
+      "solution": "Next.js app with two route groups: a GSAP-driven public site and a separate /admin dashboard that never share heavy code (the site never loads the API client, the admin never loads GSAP or frames).",
+      "workflow": [
+        "Guest orders ahead on the site",
+        "Validated by zod, idempotent POST",
+        "Lands on the kanban order board",
+        "Staff drag it through preparation",
+        "Menu and hours sync back live"
+      ],
+      "role": "Designed and built end to end as a solo project: art direction, scroll choreography, data layer, dashboard UI, accessibility and performance tuning, and Vercel deployment.",
+      "highlights": [
+        "Pinned canvas drawing 267 WebP frames tied 1:1 to scroll, streamed progressively (30 up front, the rest when idle); the LCP element is a real <picture> poster.",
+        "Typed REST API on MSW v2 with zod as single source of truth, TanStack Query caching/polling, cross-tab sync via BroadcastChannel, optimistic updates with rollback and retry.",
+        "Realistic network simulation (300-900 ms latency, failures, timeouts); idempotency keys prevent duplicate orders on retry or double click.",
+        "Dashboard: KPIs and Recharts analytics, dnd-kit kanban with full keyboard moves, TanStack Table menu editor with react-hook-form + zod, Ctrl+K command palette.",
+        "Accessibility: semantic HTML, keyboard support everywhere, live regions, 44 px touch targets, reduced-motion fallback, axe WCAG 2.1 AA scans with no violations."
+      ],
+      "stack": [
+        "Next.js 15",
+        "React 19",
+        "TypeScript",
+        "Tailwind CSS v4",
+        "shadcn/ui",
+        "GSAP",
+        "ScrollTrigger",
+        "SplitText",
+        "Lenis",
+        "TanStack Query v5",
+        "Zustand",
+        "zod",
+        "MSW v2",
+        "dnd-kit",
+        "TanStack Table",
+        "react-hook-form",
+        "Recharts",
+        "Playwright",
+        "axe-core",
+        "Lighthouse",
+        "Vercel"
+      ],
+      "results": [
+        "Lighthouse desktop (production build): Performance 97-98, Accessibility 100, Best Practices 100, SEO 100",
+        "CLS of 0 (skeletons reuse the real layout)",
+        "WCAG 2.1 AA: no axe violations"
+      ],
+      "links": {
+        "demo": "https://velora-rho-lyart.vercel.app/",
+        "admin_demo": "https://velora-rho-lyart.vercel.app/admin/login",
+        "repo": null,
+        "video": null
+      },
+      "portfolio": {
+        "page": "velora.html",
+        "anchor": null
+      },
+      "good_for_roles": [
+        "Frontend",
+        "React",
+        "Full-Stack"
+      ]
+    },
+    {
+      "id": "zad-ezzaytouni",
+      "name": "Zad Ezzaytouni - E-learning Platform",
+      "category": [
+        "Full Stack",
+        "E-learning",
+        "AI"
+      ],
+      "featured": true,
+      "in_portfolio": true,
+      "period": "Feb 2026 - Jul 2026",
+      "context": "Engineering final year project at Tradrly, delivered to the Zitouna institute (Tunisia)",
+      "pitch": "Islamic e-learning platform for students, teachers and administrators, with course management, dashboards, virtual classrooms, notifications, Q&A and AI-assisted support.",
+      "problem": "Learning platforms must support several roles, live sessions, course organization, questions, notifications and progress tracking without becoming heavy to use.",
+      "solution": "One platform centralizing course discovery, student access, teacher dashboards, admin analytics, virtual classrooms and AI-assisted Q&A.",
+      "workflow": [
+        "Role-based dashboards",
+        "Course management",
+        "Virtual classrooms",
+        "Questions and AI support",
+        "Analytics and reports"
+      ],
+      "role": "Designed and developed full-stack features: React dashboards, Node/Express REST APIs, MongoDB, JWT + RBAC security, FastAPI AI microservices, Docker and CI/CD.",
+      "highlights": [
+        "Role-specific dashboards for students, teachers and admins (React, Vite, Tailwind CSS).",
+        "REST APIs for course management, enrollments, learning resources and virtual classrooms.",
+        "FastAPI AI microservices for automated quiz generation, lesson assistance and semantic search.",
+        "Dockerized with Docker Compose and shipped with GitHub Actions CI/CD."
+      ],
+      "stack": [
+        "React",
+        "Vite",
+        "Tailwind CSS",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "FastAPI",
+        "JWT",
+        "RBAC",
+        "Docker",
+        "Docker Compose",
+        "GitHub Actions"
+      ],
+      "results": [],
+      "links": {
+        "demo": null,
+        "repo": null,
+        "video": "https://res.cloudinary.com/k4xsaf85/video/upload/v1788882124/landing-page-demo.mp4"
+      },
+      "portfolio": {
+        "page": "elearning.html",
+        "anchor": null
+      },
+      "good_for_roles": [
+        "Full-Stack",
+        "MERN",
+        "AI integration",
+        "CI/CD"
+      ],
+      "status": "Delivered"
+    },
+    {
+      "id": "youdube",
+      "name": "YouDube - AI Video Dubbing Platform",
+      "category": [
+        "Full Stack",
+        "AI"
+      ],
+      "featured": true,
+      "in_portfolio": true,
+      "period": "Jul 2025 - Aug 2025",
+      "context": "Internship at Tradrly",
+      "pitch": "Upload a video, choose a target language/dialect and voice, and get a localized version generated by an AI pipeline.",
+      "problem": "Creators need a faster way to localize videos without manually handling transcription, translation, audio generation and final assembly.",
+      "solution": "Guided workflow to upload content, pick dialect and voice, launch the AI pipeline and manage resulting projects from a dashboard.",
+      "workflow": [
+        "Audio extraction",
+        "Transcription (Whisper)",
+        "Translation (Gemini)",
+        "Voice synthesis",
+        "Final merge (FFmpeg)"
+      ],
+      "role": "Worked across the full stack: responsive React interfaces (LTR/RTL), REST APIs, authentication, file workflows and integration with a dedicated Flask AI service.",
+      "highlights": [
+        "Express REST APIs for authentication, video uploads and processing workflows, secured with JWT.",
+        "Flask AI microservice using Whisper, Gemini, FFmpeg, Librosa and Pydub.",
+        "Asynchronous communication between the Express API and AI processing services.",
+        "Multilingual LTR/RTL interfaces including Arabic localization and dark mode."
+      ],
+      "stack": [
+        "React",
+        "Vite",
+        "Tailwind CSS",
+        "Material UI",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Flask",
+        "FFmpeg",
+        "Whisper",
+        "Gemini",
+        "Librosa",
+        "Pydub",
+        "JWT"
+      ],
+      "results": [],
+      "links": {
+        "demo": null,
+        "repo": null,
+        "video": "https://res.cloudinary.com/k4xsaf85/video/upload/v1788882426/Video_Project_2.mp4"
+      },
+      "portfolio": {
+        "page": "youdube.html",
+        "anchor": null
+      },
+      "good_for_roles": [
+        "Full-Stack",
+        "AI integration",
+        "MERN"
+      ]
+    },
+    {
+      "id": "pulse-hr",
+      "name": "Pulse HR - Human Resources Platform",
+      "category": [
+        "Full Stack",
+        "Enterprise",
+        "HR"
+      ],
+      "featured": false,
+      "in_portfolio": true,
+      "period": "Jul 2024 - Aug 2024",
+      "context": "Internship at Telnet (team project)",
+      "pitch": "Enterprise HR platform for employees, organizational structure, attendance, leave requests, recruitment, performance and reporting in one dashboard.",
+      "problem": "HR teams need one workspace for people, attendance, leave, departments, job offers and reporting instead of disconnected tools.",
+      "solution": "Unified interface with dashboards, employee records, org structure, time tracking, leave management, recruitment forms and analytics.",
+      "workflow": [
+        "Employee management",
+        "Attendance tracking",
+        "Leave requests",
+        "Recruitment",
+        "Reports and analytics"
+      ],
+      "role": "Contributed responsive frontend modules, reusable UI, form workflows, API integration, state management and Laravel backend APIs during the Telnet internship.",
+      "highlights": [
+        "Reusable Next.js / React / TypeScript / Material UI components and React Hook Form workflows.",
+        "Laravel + Eloquent + MySQL REST APIs for employees, departments and recruitment.",
+        "State with Redux Toolkit and React Query; Agile team practices."
+      ],
+      "stack": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Material UI",
+        "React Hook Form",
+        "React Query",
+        "Redux Toolkit",
+        "Axios",
+        "Laravel",
+        "Eloquent ORM",
+        "MySQL"
+      ],
+      "results": [],
+      "links": {
+        "demo": null,
+        "repo": "https://github.com/siwar224/telnet-pulse-hr-backend",
+        "video": null
+      },
+      "portfolio": {
+        "page": "pulsehr.html",
+        "anchor": null
+      },
+      "good_for_roles": [
+        "Full-Stack",
+        "Frontend",
+        "PHP/Laravel"
+      ]
+    },
+    {
+      "id": "specora-ai",
+      "name": "Specora AI - Idea to Software Specification",
+      "category": [
+        "AI",
+        "Product",
+        "Developer tool"
+      ],
+      "featured": true,
+      "in_portfolio": true,
+      "period": "2026",
+      "context": "Personal project",
+      "pitch": "Local-first assistant that turns a rough product idea (typed or spoken) into a reviewable software specification with traceable requirements, user stories and acceptance criteria.",
+      "problem": "Product ideas start as a paragraph or a voice note; turning them into something precise enough to discuss, test and build is hard.",
+      "solution": "The LLM proposes a draft; the app normalizes and validates it, and the human reviews assumptions, answers open questions and decides what is ready.",
+      "workflow": [
+        "Product idea (text or voice)",
+        "Structured specification draft",
+        "Human review and editing",
+        "Traceable requirements, stories and acceptance criteria",
+        "HTML / PDF export"
+      ],
+      "role": "Designed and built solo.",
+      "highlights": [
+        "Seven sections in a stable order: overview, functional requirements, user stories, acceptance criteria, non-functional requirements, open questions, assumptions.",
+        "The application (not the LLM) owns ID normalization (FR, US, AC, NFR, Q, A) to protect traceability links.",
+        "Works with OpenAI or any OpenAI-compatible local LLM endpoint; optional speech-to-text input.",
+        "Generation failures are surfaced as actionable errors instead of rendering an invalid draft."
+      ],
+      "stack": [
+        "Python",
+        "FastAPI",
+        "OpenAI API / local LLM",
+        "Speech-to-text",
+        "HTML",
+        "JavaScript"
+      ],
+      "results": [],
+      "links": {
+        "demo": null,
+        "repo": "https://github.com/siwar224/Specora-AI",
+        "video": null
+      },
+      "portfolio": {
+        "page": null,
+        "anchor": null
+      },
+      "good_for_roles": [
+        "AI Engineer",
+        "Python backend",
+        "Full-Stack"
+      ]
+    },
+    {
+      "id": "ai-detective",
+      "name": "AI Detective - Incident Investigation (CLI + Dashboard)",
+      "category": [
+        "AI",
+        "Developer tool",
+        "Observability"
+      ],
+      "featured": true,
+      "in_portfolio": true,
+      "period": "2026",
+      "context": "Personal project (two repositories: Python core/gateway and React dashboard)",
+      "pitch": "Turns application logs into evidence-based diagnostic reports and practical developer actions, separating facts from hypotheses.",
+      "problem": "Reading raw logs line by line is slow, while pasting everything into an LLM gives vague, unsupported answers.",
+      "solution": "Deterministic parsing and statistics stay the source of truth; a bounded Groq agent with read-only tools proposes causes linked to source line numbers.",
+      "workflow": [
+        "Analyze a log file or connect to a running backend",
+        "Parse text / JSON / NDJSON keeping line numbers",
+        "Deterministic stats, error groups and timeline",
+        "Bounded Groq investigation (+ optional Stack Overflow enrichment)",
+        "Markdown / JSON report and copyable resolution prompt"
+      ],
+      "role": "Designed and built solo: Python analysis engine, optional FastAPI live gateway, and a separate React/Vite dashboard.",
+      "highlights": [
+        "Core CLI works with no browser, server or LLM; deterministic analysis is the fallback.",
+        "Optional FastAPI Live Gateway probes localhost:5000/3000 or a user-given URL and reads text, JSON, NDJSON or stream snapshots.",
+        "Separate React dashboard: metrics, every error occurrence with its source line, per-error resolution steps and a structured prompt for one error or the full incident.",
+        "Never changes source code or runs arbitrary commands: an investigation assistant, not a black box.",
+        "Tested with pytest."
+      ],
+      "stack": [
+        "Python",
+        "FastAPI",
+        "Groq tool-calling",
+        "pytest",
+        "React",
+        "Vite",
+        "JavaScript"
+      ],
+      "results": [],
+      "links": {
+        "demo": null,
+        "repo": "https://github.com/siwar224/AI_detective-cli",
+        "repo_frontend": "https://github.com/siwar224/AI-detecitve-frontend",
+        "video": null
+      },
+      "portfolio": {
+        "page": null,
+        "anchor": null
+      },
+      "good_for_roles": [
+        "AI Engineer",
+        "Python backend",
+        "DevOps / SRE tooling",
+        "Full-Stack"
+      ]
+    },
+    {
+      "id": "devops-pipeline",
+      "name": "DevOps Automation Pipeline",
+      "category": [
+        "DevOps",
+        "CI/CD"
+      ],
+      "featured": true,
+      "in_portfolio": true,
+      "period": "Mar 2024 - May 2024",
+      "context": "Academic project (ESPRIT)",
+      "pitch": "Jenkins CI/CD for a Spring Boot app: tests, quality gates, artifact management, Docker deployment and monitoring dashboards.",
+      "problem": null,
+      "solution": "Pipeline Build -> Test -> Quality -> Deploy -> Monitor: Jenkins, SonarQube, Nexus, Docker, Prometheus and Grafana on Linux (WSL Ubuntu).",
+      "workflow": [
+        "Build",
+        "Test (JUnit, Mockito)",
+        "Quality gate (SonarQube)",
+        "Artifact (Nexus) and Docker deploy",
+        "Monitor (Prometheus, Grafana)"
+      ],
+      "role": "Developed and tested the Spring Boot application and designed the full Jenkins pipeline and monitoring setup.",
+      "highlights": [
+        "Spring Boot app tested with JUnit and Mockito.",
+        "Jenkins pipeline integrating SonarQube and Nexus for builds, tests, code quality, artifacts and deployment.",
+        "Dockerized deployment with Prometheus/Grafana dashboards on Linux (WSL Ubuntu)."
+      ],
+      "stack": [
+        "Spring Boot",
+        "Java",
+        "JUnit",
+        "Mockito",
+        "Jenkins",
+        "SonarQube",
+        "Nexus",
+        "Docker",
+        "Prometheus",
+        "Grafana",
+        "Linux"
+      ],
+      "results": [],
+      "links": {
+        "demo": null,
+        "repo": null,
+        "video": null,
+        "_note": "GitHub repo 'Devops_Project' exists but is empty; do not share it as source code."
+      },
+      "portfolio": {
+        "page": null,
+        "anchor": null
+      },
+      "good_for_roles": [
+        "DevOps",
+        "CI/CD",
+        "Java backend"
+      ]
+    },
+    {
+      "id": "cimaseat",
+      "name": "CiMaSeat - Cinema Booking",
+      "category": [
+        "Python",
+        "Clean architecture"
+      ],
+      "featured": true,
+      "in_portfolio": true,
+      "period": "2026",
+      "context": "Personal project (Python fundamentals, OOP, testing)",
+      "pitch": "Cinema booking app with an interactive seat map, atomic rejection of occupied seats, reservation lookup and cancellation, shared by a CLI and a Streamlit UI.",
+      "problem": null,
+      "solution": "One service layer and JSON storage shared by an English CLI and a Streamlit web interface.",
+      "workflow": [
+        "Browse 20 movies / 60 showtimes",
+        "Pick a session",
+        "Select seats on the map",
+        "Book and get a ticket with a unique ID",
+        "Look up or cancel a reservation"
+      ],
+      "role": "Designed and built solo.",
+      "highlights": [
+        "A booking is rejected entirely if any requested seat is unavailable (atomic rejection).",
+        "Cancellation keeps history and releases seats.",
+        "unittest suite covering loading, relationships, seat map, persistence, atomicity, cancellation and malformed JSON."
+      ],
+      "stack": [
+        "Python 3.11",
+        "Streamlit",
+        "Dataclasses",
+        "JSON storage",
+        "unittest"
+      ],
+      "results": [],
+      "links": {
+        "demo": "https://cimaseats-pro.streamlit.app/",
+        "repo": "https://github.com/siwar224/CimaSeats",
+        "video": null
+      },
+      "portfolio": {
+        "page": null,
+        "anchor": null
+      },
+      "good_for_roles": [
+        "Python",
+        "Junior backend"
+      ]
+    },
+    {
+      "id": "peopleknowledge-ai",
+      "name": "PeopleKnowledge AI - RAG over HR Policies",
+      "category": [
+        "AI",
+        "RAG",
+        "Python backend"
+      ],
+      "featured": false,
+      "in_portfolio": false,
+      "status": "In progress",
+      "period": "Nov 2026 - present",
+      "context": "Personal project (GitHub only)",
+      "pitch": "RAG API that answers questions about HR policy documents.",
+      "problem": "Employees need reliable answers from long HR policy documents.",
+      "solution": "FastAPI service with a RAG module, a document manifest and a gold question set for evaluation.",
+      "workflow": null,
+      "role": "Designed and building solo.",
+      "highlights": [
+        "Project structured for evaluation from the start: source documents, metadata manifest and a gold Q&A set (rag_questions_gold.jsonl).",
+        "Quality tooling: ruff linting and pytest."
+      ],
+      "stack": [
+        "Python 3.11",
+        "FastAPI",
+        "Uvicorn",
+        "RAG",
+        "ruff",
+        "pytest"
+      ],
+      "results": [],
+      "links": {
+        "demo": null,
+        "repo": "https://github.com/siwar224/peopleknowledge-ai",
+        "video": null
+      },
+      "portfolio": {
+        "page": null,
+        "anchor": null
+      },
+      "good_for_roles": [
+        "AI Engineer",
+        "Python backend"
+      ],
+      "_todo": "Early-stage repo: complete the description once the RAG pipeline (embeddings, vector store, LLM) is implemented."
+    },
+    {
+      "id": "ecoevents",
+      "name": "EcoEvents - Ecological Event Management Platform",
+      "category": [
+        "Full Stack",
+        "PHP/Laravel",
+        "DevOps"
+      ],
+      "featured": false,
+      "in_portfolio": false,
+      "period": "Oct 2025 - Dec 2025",
+      "context": "From CV (no public repo or portfolio page)",
+      "pitch": "Full-stack platform for ecological events: organization, participant registration, partnerships and digital resource sharing.",
+      "problem": null,
+      "solution": "Laravel 12 + MySQL application with role-based access and monitoring.",
+      "workflow": null,
+      "role": "Developed the platform (team size not specified).",
+      "highlights": [
+        "Secure authentication and role-based access with Laravel Breeze and Jetstream.",
+        "Responsive interfaces with Blade and Tailwind CSS.",
+        "Dockerized, with SonarQube for code quality and Prometheus + Grafana for monitoring."
+      ],
+      "stack": [
+        "Laravel 12",
+        "PHP",
+        "MySQL",
+        "Blade",
+        "Tailwind CSS",
+        "Docker",
+        "SonarQube",
+        "Prometheus",
+        "Grafana"
+      ],
+      "results": [],
+      "links": {
+        "demo": null,
+        "repo": null,
+        "video": null
+      },
+      "portfolio": {
+        "page": null,
+        "anchor": null
+      },
+      "good_for_roles": [
+        "PHP/Laravel",
+        "Full-Stack",
+        "DevOps"
+      ]
+    },
+    {
+      "id": "portfolio-site",
+      "name": "This portfolio",
+      "category": [
+        "Frontend",
+        "Motion"
+      ],
+      "featured": false,
+      "in_portfolio": true,
+      "period": "2026",
+      "context": "Personal",
+      "pitch": "Hand-built static portfolio (HTML, CSS, vanilla JS) with smooth scrolling and motion, deployed on Vercel.",
+      "problem": null,
+      "solution": null,
+      "workflow": null,
+      "role": "Designed and built solo.",
+      "highlights": [
+        "Custom build and dev scripts in Node.js",
+        "Light/dark theme",
+        "Lenis smooth scroll"
+      ],
+      "stack": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Lenis",
+        "Node.js",
+        "Vercel"
+      ],
+      "results": [],
+      "links": {
+        "demo": "https://siwar-msallem.vercel.app/",
+        "repo": "https://github.com/siwar224/portfolio",
+        "video": null
+      },
+      "portfolio": {
+        "page": "index.html",
+        "anchor": "home"
+      },
+      "good_for_roles": [
+        "Frontend"
+      ]
+    }
+  ]
+}

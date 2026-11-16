@@ -1,0 +1,79 @@
+{
+  "_meta": {
+    "purpose": "Answers to recurring recruiter questions. If a question is not covered here or in the other data files, the agent says it does not know and suggests contacting Siwar directly.",
+    "last_updated": "2026-11-16"
+  },
+  "faq": [
+    {
+      "id": "availability",
+      "question": "When can Siwar start?",
+      "answer": "Immediately, with no notice period."
+    },
+    {
+      "id": "remote",
+      "question": "Does Siwar work remotely?",
+      "answer": "Yes. Siwar is based in Mahdia, Tunisia and is open to remote, hybrid and on-site work."
+    },
+    {
+      "id": "relocation",
+      "question": "Is Siwar open to relocation?",
+      "answer": "Yes, Siwar is open to relocation."
+    },
+    {
+      "id": "contract",
+      "question": "What kind of contract is Siwar looking for (full-time, freelance, internship)?",
+      "answer": "Full-time permanent (CDI), fixed-term (CDD) or freelance."
+    },
+    {
+      "id": "salary",
+      "question": "What are Siwar's salary expectations?",
+      "answer": "This is best discussed directly with Siwar.",
+      "agent_policy": "Never state a number. Say it is best discussed directly with Siwar and offer the contact options."
+    },
+    {
+      "id": "target-roles",
+      "question": "What roles is Siwar looking for?",
+      "answer": "AI Engineer roles first, as well as Full-Stack, Backend, Mobile (React Native) and DevOps / CI/CD positions."
+    },
+    {
+      "id": "main-stack",
+      "question": "What is Siwar's main stack?",
+      "answer": "React, React Native (Expo), TypeScript, Node.js and Fastify with MongoDB, plus Python/FastAPI for AI services, and Docker + GitHub Actions/Jenkins for delivery."
+    },
+    {
+      "id": "fullstack-or-devops",
+      "question": "Is Siwar a full-stack developer or a DevOps engineer?",
+      "answer": "Primarily a full-stack software engineer, with a genuine CI/CD and automation edge: Siwar containerizes applications, builds pipelines (GitHub Actions, Jenkins), adds quality gates (SonarQube) and sets up monitoring (Prometheus, Grafana). Both profiles are relevant depending on the role."
+    },
+    {
+      "id": "payments",
+      "question": "Does Siwar have payment integration experience?",
+      "answer": "Yes, in production work at Tradrly (Kochi SaaS): Tap Payments (including Apple Pay via Tap), Tamara and Tabby, covering checkout, verification, webhooks, capture and refunds, with idempotency and duplicate-capture prevention."
+    },
+    {
+      "id": "ai",
+      "question": "Does Siwar have AI / LLM experience?",
+      "answer": "Yes: migrated production AI features (chat, content generation, OCR) to Anthropic Claude at Tradrly; built FastAPI AI microservices (quiz generation, lesson assistance, semantic search); a Whisper + Gemini + FFmpeg dubbing pipeline; a bounded Groq agent for log investigation (AI Detective); an LLM spec generator with app-side validation (Specora AI); and a RAG API in progress (PeopleKnowledge AI)."
+    },
+    {
+      "id": "languages",
+      "question": "Which languages does Siwar speak?",
+      "answer": "Arabic (native), French and English (professional working proficiency), Italian (beginner, A2)."
+    },
+    {
+      "id": "degree",
+      "question": "What is Siwar's education?",
+      "answer": "Engineering degree in Computer Engineering from ESPRIT (Sep 2026) and a Bachelor's in Computer Science from ISIMM Monastir (2020-2023, Software Engineering and Information Systems)."
+    },
+    {
+      "id": "cv",
+      "question": "Can I get Siwar's CV?",
+      "answer": "Yes, the Full-Stack CV can be downloaded from the portfolio (assets/siwar-msallem-cv-software-engineer.pdf)."
+    },
+    {
+      "id": "contact",
+      "question": "How can I contact Siwar?",
+      "answer": "By email at siwarmsellem@gmail.com or on LinkedIn: linkedin.com/in/siwarmsellem."
+    }
+  ]
+}

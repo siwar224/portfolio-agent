@@ -1,0 +1,125 @@
+{
+  "_meta": {
+    "purpose": "Identity and positioning used by the portfolio agent. Source of truth for who Siwar is.",
+    "sources": [
+      "cv_siwar_M_sallem.pdf (Full-Stack)",
+      "cv_siwar_M_sallem_eng_devops.pdf (CI/CD)",
+      "index.html",
+      "github.com/siwar224"
+    ],
+    "last_updated": "2026-11-16"
+  },
+  "name": "Siwar M'SALLEM",
+  "headline": "Software Engineer",
+  "location": {
+    "city": "Mahdia",
+    "country": "Tunisia",
+    "remote_friendly": true
+  },
+  "status": {
+    "open_to_opportunities": true,
+    "availability": "Immediately",
+    "notice_period": "None",
+    "contract_types": [
+      "Full-time permanent (CDI)",
+      "Fixed-term (CDD)",
+      "Freelance"
+    ],
+    "work_modes": [
+      "Remote",
+      "Hybrid",
+      "On-site"
+    ],
+    "relocation": "Open to relocation"
+  },
+  "summary": {
+    "short": "Software Engineer who builds secure web and mobile products end to end, from React and React Native interfaces to Fastify APIs, payments and AI features, and who also automates how they ship.",
+    "long": "Computer Engineer (ESPRIT, 2026) with hands-on experience building secure web and mobile applications with React, React Native, TypeScript, Node.js and Fastify. Experienced in RESTful API design, multi-provider payment integrations (Tap, Tamara, Tabby, Apple Pay via Tap) and secure transaction workflows with webhooks and idempotency. Works with MongoDB, microservices and AI-powered features (Anthropic Claude, Gemini, Whisper, Groq, FastAPI services). Distinctive edge: also containerizes, wires CI/CD (GitHub Actions, Jenkins), adds quality gates (SonarQube) and monitoring (Prometheus, Grafana) so features reach production reliably."
+  },
+  "positioning": {
+    "primary_profile": "Full-Stack Software Engineer (React / React Native / Node.js / Fastify / TypeScript)",
+    "secondary_profile": "Software Engineer with CI/CD & Automation focus (Docker, GitHub Actions, Jenkins, SonarQube, Nexus, Prometheus, Grafana)",
+    "strengths": [
+      "End-to-end delivery: web, mobile, API, database and deployment pipeline",
+      "Payment integrations and secure transaction workflows (webhook validation, idempotency, duplicate-capture prevention, refunds)",
+      "AI-powered product features grounded in real workflows (chat, OCR, content generation, transcription, translation, RAG, bounded agents)",
+      "DevOps mindset: Docker, CI/CD, code-quality gates and monitoring",
+      "Multilingual products: Arabic-first and LTR/RTL interfaces"
+    ],
+    "target_roles": [
+      "AI Engineer",
+      "Full-Stack Software Engineer",
+      "Backend Developer (Node.js / TypeScript / Python)",
+      "Mobile Developer (React Native)",
+      "DevOps / CI/CD Engineer"
+    ],
+    "focus_profile": "AI Engineer: building production AI features (LLM integration, agents, RAG, AI microservices) on top of solid full-stack and DevOps foundations"
+  },
+  "key_numbers": {
+    "professional_experiences": 5,
+    "projects_shipped": "6+",
+    "payment_providers_integrated": 4,
+    "payment_providers_detail": [
+      "Tap Payments",
+      "Tamara",
+      "Tabby",
+      "Stripe"
+    ],
+    "engineering_degree_year": 2026
+  },
+  "education": [
+    {
+      "degree": "Engineering Degree in Computer Engineering",
+      "school": "ESPRIT - Engineering School",
+      "location": "Tunisia",
+      "date": "Sep 2026",
+      "specialization": "Web and Internet Technologies"
+    },
+    {
+      "degree": "Bachelor's Degree in Computer Science",
+      "school": "Higher Institute of Computer Science and Mathematics of Monastir (ISIMM)",
+      "location": "Monastir, Tunisia",
+      "date": "2020 - 2023",
+      "specialization": "Software Engineering and Information Systems"
+    }
+  ],
+  "languages": [
+    {
+      "language": "Arabic",
+      "level": "Native"
+    },
+    {
+      "language": "French",
+      "level": "Professional working proficiency"
+    },
+    {
+      "language": "English",
+      "level": "Professional working proficiency"
+    },
+    {
+      "language": "Italian",
+      "level": "Beginner (A2)"
+    }
+  ],
+  "contact": {
+    "email": "siwarmsellem@gmail.com",
+    "linkedin": "https://linkedin.com/in/siwarmsellem",
+    "github": "https://github.com/siwar224",
+    "portfolio": "https://siwar-msallem.vercel.app/",
+    "booking_link": null,
+    "_note": "Phone number intentionally left out: the agent should direct people to email or LinkedIn. Add booking_link (Calendly etc.) when available."
+  },
+  "cv_files": [
+    {
+      "variant": "full-stack",
+      "title": "Full-Stack Software Engineer",
+      "portfolio_path": "assets/siwar-msallem-cv-software-engineer.pdf"
+    },
+    {
+      "variant": "devops",
+      "title": "Software Engineer | CI/CD & Automation",
+      "portfolio_path": null,
+      "_todo": "Upload the CI/CD CV to assets/ if the agent should offer it"
+    }
+  ]
+}

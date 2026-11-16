@@ -1,0 +1,165 @@
+{
+  "_meta": {
+    "purpose": "Professional experience, most recent first. 'highlights_fullstack' and 'highlights_devops' come from the two CV variants so the agent can stress what matches the visitor's role.",
+    "last_updated": "2026-11-16"
+  },
+  "experience": [
+    {
+      "id": "tradrly-kochi",
+      "title": "Software Engineer - Kochi SaaS Platform",
+      "company": "Tradrly",
+      "location": "Mahdia, Tunisia",
+      "start": "2026-08",
+      "end": "2026-10",
+      "type": "Full-time",
+      "product": "Kochi, an Arabic-first fitness coaching SaaS for the Saudi market, used by coaches and their clients",
+      "stack": [
+        "Fastify",
+        "TypeScript",
+        "MongoDB",
+        "React Native",
+        "Expo",
+        "Tap Payments",
+        "Tamara",
+        "Tabby",
+        "Apple Pay",
+        "Anthropic Claude"
+      ],
+      "highlights_fullstack": [
+        "Developed full-stack features for an Arabic-first fitness coaching SaaS using Fastify, TypeScript, MongoDB and React Native/Expo, supporting client and coach workflows.",
+        "Integrated multiple payment providers (Tap, Tamara, Tabby) and Apple Pay via Tap: checkout, payment verification, capture and refund workflows.",
+        "Hardened transaction security and reliability with webhook validation, payment state management, idempotency safeguards and duplicate-capture prevention.",
+        "Implemented multi-currency pricing with SAR conversion, payment-time price snapshots, and configurable platform fees and taxes.",
+        "Migrated AI-powered features (chat, content generation, OCR) to Anthropic Claude with robust error handling, timeouts and retries."
+      ],
+      "highlights_devops": [
+        "Implemented secure payment workflows covering checkout, verification, webhooks, captures and refunds, with transaction tracking and idempotency safeguards."
+      ],
+      "portfolio_project_id": null,
+      "delivery": "Delivered to the client and in use by coaches and clients"
+    },
+    {
+      "id": "tradrly-pfe",
+      "title": "Full Stack Software Engineer Intern - Engineering Final Year Project",
+      "company": "Tradrly",
+      "location": "Mahdia, Tunisia",
+      "start": "2026-02",
+      "end": "2026-07",
+      "type": "Internship (engineering final year project)",
+      "product": "Zad Ezzaytouni, a MERN e-learning platform",
+      "stack": [
+        "React",
+        "Vite",
+        "Tailwind CSS",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "FastAPI",
+        "JWT",
+        "RBAC",
+        "Docker",
+        "Docker Compose",
+        "GitHub Actions"
+      ],
+      "highlights_fullstack": [
+        "Designed and developed a MERN e-learning platform with dedicated dashboards for students, teachers and administrators.",
+        "Architected RESTful APIs with Node.js, Express.js and MongoDB for course management, enrollments, learning resources and virtual classrooms.",
+        "Built responsive React interfaces with Vite and Tailwind CSS, delivering role-specific dashboards and interactive learning workflows.",
+        "Implemented JWT authentication and RBAC, and integrated FastAPI microservices for AI quiz generation, lesson assistance and semantic search.",
+        "Containerized the application with Docker and Docker Compose and implemented CI/CD pipelines with GitHub Actions."
+      ],
+      "highlights_devops": [
+        "Containerized the MERN platform with Docker and Docker Compose and implemented CI/CD workflows with GitHub Actions to streamline delivery."
+      ],
+      "portfolio_project_id": "zad-ezzaytouni",
+      "delivery": "Delivered to the Zitouna institute (Tunisia)"
+    },
+    {
+      "id": "tradrly-internship-2025",
+      "title": "Full Stack Software Engineer Intern",
+      "company": "Tradrly",
+      "location": "Mahdia, Tunisia",
+      "start": "2025-07",
+      "end": "2025-08",
+      "type": "Internship",
+      "product": "YouDube, an AI video dubbing platform",
+      "stack": [
+        "React",
+        "Vite",
+        "Tailwind CSS",
+        "Material UI",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Flask",
+        "Whisper",
+        "Gemini",
+        "FFmpeg",
+        "JWT"
+      ],
+      "highlights_fullstack": [
+        "Developed an AI video dubbing platform (React, Node.js, Express.js, MongoDB) enabling automated multilingual video localization.",
+        "Built responsive React interfaces with Vite, Tailwind CSS and Material UI, supporting multilingual LTR/RTL layouts.",
+        "Designed REST APIs for authentication, video uploads and processing workflows, integrating Flask AI services with Whisper, Gemini and FFmpeg.",
+        "Implemented JWT authentication, secure file management and asynchronous communication between Express and AI processing services."
+      ],
+      "highlights_devops": [
+        "Developed and integrated a Flask AI microservice using Whisper, Gemini, FFmpeg and audio libraries for transcription, translation and dubbing."
+      ],
+      "portfolio_project_id": "youdube"
+    },
+    {
+      "id": "telnet-2024",
+      "title": "Web Development Intern",
+      "company": "Telnet",
+      "location": "Tunis, Tunisia",
+      "start": "2024-07",
+      "end": "2024-08",
+      "type": "Internship",
+      "product": "Pulse HR, an enterprise HR management platform",
+      "stack": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Material UI",
+        "Redux Toolkit",
+        "React Query",
+        "Laravel",
+        "Eloquent ORM",
+        "MySQL"
+      ],
+      "highlights_fullstack": [
+        "Contributed to Pulse HR, an enterprise HR platform, building reusable interfaces with Next.js, React, TypeScript and Material UI.",
+        "Developed and integrated REST APIs with Laravel, Eloquent ORM and MySQL for employee, department and recruitment workflows.",
+        "Managed client state with Redux Toolkit and React Query, in an Agile team (debugging, testing, maintenance)."
+      ],
+      "highlights_devops": [],
+      "portfolio_project_id": "pulse-hr"
+    },
+    {
+      "id": "startnow-2023",
+      "title": "Bachelor's Final Year Project - Full Stack Development",
+      "company": "StartNow",
+      "location": "Tunis, Tunisia",
+      "start": "2023-02",
+      "end": "2023-06",
+      "type": "Internship (bachelor final year project)",
+      "product": "Full-stack business application",
+      "stack": [
+        "React",
+        "Redux",
+        "AG Grid",
+        "Express.js",
+        "MongoDB",
+        "SQL Server"
+      ],
+      "highlights_fullstack": [
+        "Contributed to a full-stack business application using React, Redux, Express.js, MongoDB and SQL Server.",
+        "Built reusable React components and configurable AG Grid tables with advanced filtering, data visualization and customization.",
+        "Built and integrated Express.js REST APIs supporting business workflows, in an Agile team (code reviews, debugging)."
+      ],
+      "highlights_devops": [],
+      "portfolio_project_id": null
+    }
+  ]
+}
