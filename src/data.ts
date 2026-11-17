@@ -124,6 +124,7 @@ export const AgentConfigSchema = z.object({
     owner_notifications: z.boolean(),
     scroll_to_section: z.boolean(),
     job_description_matching: z.boolean(),
+    book_call: z.boolean().optional(),
     _note: str.optional(),
   }),
 });

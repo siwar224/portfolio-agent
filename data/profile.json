@@ -112,8 +112,8 @@
     "linkedin": "https://linkedin.com/in/siwarmsellem",
     "github": "https://github.com/siwar224",
     "portfolio": "https://siwar-msallem.vercel.app/",
-    "booking_link": null,
-    "_note": "Phone number intentionally left out: the agent should direct people to email or LinkedIn. Add booking_link (Calendly etc.) when available."
+    "booking_link": "https://cal.com/siwar-m-sellem-nhcfh6/intro-call",
+    "_note": "Phone number intentionally left out: direct people to the booking link, email or LinkedIn. The booking link opens Siwar's calendar for a free 20-minute intro call (video link included)."
   },
   "cv_files": [
     {
