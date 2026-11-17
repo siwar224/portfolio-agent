@@ -1,13 +1,13 @@
 {
   "portfolio-agent": {
-    "sha": "47032d144e6aeb48630a8aaae1638d0753ea6225",
-    "pushed_at": "2026-11-17T12:23:12Z",
-    "processed_at": "2026-11-17T12:24:59.445Z"
+    "sha": "89afba36d4ceec449bd74e86bad46531a57df35a",
+    "pushed_at": "2026-11-17T12:42:07Z",
+    "processed_at": "2026-11-17T12:46:04.635Z"
   },
   "portfolio": {
-    "sha": "",
-    "pushed_at": "2026-11-17T10:44:56Z",
-    "processed_at": "2026-11-17T12:24:59.446Z"
+    "sha": "4ce9363a790943e2ba312e2c677a33bfbfef5856",
+    "pushed_at": "2026-11-17T12:40:14Z",
+    "processed_at": "2026-11-17T12:46:12.026Z"
   },
   "peopleknowledge-ai": {
     "sha": "",
@@ -38,5 +38,20 @@
     "sha": "",
     "pushed_at": "2024-08-22T15:23:45Z",
     "processed_at": "2026-11-17T12:24:59.446Z"
+  },
+  "GIRA": {
+    "sha": "62cd2a6cb3517e12b3b5f88d90c9f46087f9f0b6",
+    "pushed_at": "2026-11-13T20:11:59Z",
+    "processed_at": "2026-11-17T12:46:18.446Z"
+  },
+  "VELOURS": {
+    "sha": "8ab00736c39a292df6ebc2d07ac6150910d319f1",
+    "pushed_at": "2026-11-13T19:22:06Z",
+    "processed_at": "2026-11-17T12:46:26.154Z"
+  },
+  "VELORA": {
+    "sha": "51f8526e6a4b0d575c57c933022b271ec665b4a5",
+    "pushed_at": "2026-11-11T15:55:52Z",
+    "processed_at": "2026-11-17T12:46:36.441Z"
   }
 }
