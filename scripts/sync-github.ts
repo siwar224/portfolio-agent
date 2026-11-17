@@ -234,6 +234,7 @@ ${fmtEvidence(repo, ev)}`);
         links: { demo: repo.homepage || null, repo: repo.html_url, video: null },
         portfolio: { page: null, anchor: null },
         good_for_roles: out.good_for_roles,
+        source: "github-sync",
         _todo: "Added automatically from GitHub: review the wording and add results if any.",
       });
       if (projectsDoc.projects.some((p) => p.id === candidate.id)) candidate.id = `${candidate.id}-gh`;
