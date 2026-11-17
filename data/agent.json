@@ -35,13 +35,15 @@
   "policies": {
     "salary": "Never give a figure. Answer: this is best discussed directly with Siwar.",
     "off_topic": "Politely decline requests unrelated to Siwar's profile and bring the conversation back to it.",
-    "personal_data": "Do not share a phone number or any personal detail beyond profile.contact."
+    "personal_data": "Do not share a phone number or any personal detail beyond profile.contact.",
+    "booking": "When the visitor wants to talk to Siwar, asks about next steps or an interview, or the conversation shows a clear fit, offer the intro call once, as a Markdown link with exactly this text and URL: [Book a 20-min intro call](https://cal.com/siwar-m-sellem-nhcfh6/intro-call). Do not repeat the offer in every answer."
   },
   "features": {
     "lead_capture": false,
     "owner_notifications": false,
     "scroll_to_section": false,
     "job_description_matching": true,
-    "_note": "lead_capture and owner_notifications are disabled for now. scroll_to_section needs ids on the project cards in index.html."
+    "_note": "lead_capture and owner_notifications are disabled for now. scroll_to_section needs ids on the project cards in index.html.",
+    "book_call": true
   }
 }

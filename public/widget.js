@@ -14,6 +14,8 @@
   const BASE = scriptUrl.href.replace(/[^/]*$/, "");
   const API = script?.dataset.api || new URL("api/chat", BASE).href;
   const DEFAULT_THEME = script?.dataset.defaultTheme === "light" ? "light" : "dark";
+  const BOOKING_URL = script?.dataset.bookingUrl || "https://cal.com/siwar-m-sellem-nhcfh6/intro-call";
+  const isBookingLink = (url) => /^https:\/\/(app\.)?cal\.com\//.test(url);
   const STORE_KEY = "portfolio-agent:conversation";
   const MAX_INPUT = 2000;
 
@@ -83,6 +85,10 @@ header .av { width:40px; height:40px; }
 .msg.bot ul { margin:4px 0 8px; padding-left:18px; } .msg.bot li { margin:2px 0; }
 .msg.bot a { color:var(--accent2); text-underline-offset:2px; }
 .root.light .msg.bot a { color:var(--accent); }
+.msg.bot a.cta, .root.light .msg.bot a.cta { display:inline-flex; align-items:center; gap:8px; margin:4px 0; padding:9px 14px; border-radius:12px;
+  background:var(--accent); color:var(--on-accent); font-weight:600; font-size:13.5px; text-decoration:none; }
+.msg.bot a.cta:hover { filter:brightness(1.08); }
+.msg.bot a.cta svg { width:16px; height:16px; flex:none; }
 .msg.bot code { font-family:"JetBrains Mono", ui-monospace, monospace; font-size:12.5px; background:var(--bg); padding:1px 5px; border-radius:5px; }
 .msg.error { align-self:stretch; max-width:100%; background:transparent; border:1px solid var(--danger); color:var(--danger); font-size:13px; }
 .typing { display:inline-flex; gap:4px; padding:4px 0; }
@@ -121,6 +127,7 @@ textarea::placeholder { color:var(--muted); }
     close: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
     reset: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>',
     send: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+    calendar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
   };
 
   // ---------- helpers ----------
@@ -149,7 +156,9 @@ textarea::placeholder { color:var(--muted); }
         const url = safeHref(href.replace(/&amp;/g, "&"));
         if (!url) return label;
         const external = new URL(url).origin !== location.origin;
-        return `<a href="${escapeHtml(url)}"${external ? ' target="_blank" rel="noopener noreferrer"' : ""}>${label}</a>`;
+        const attrs = external ? ' target="_blank" rel="noopener noreferrer"' : "";
+        if (isBookingLink(url)) return `<a class="cta" href="${escapeHtml(url)}"${attrs}>${ICONS.calendar}<span>${label}</span></a>`;
+        return `<a href="${escapeHtml(url)}"${attrs}>${label}</a>`;
       });
     const out = [];
     let list = null;
@@ -221,9 +230,11 @@ textarea::placeholder { color:var(--muted); }
   const headerAv = avatar(40);
   const title = el("div", { class: "title" },
     '<strong>Siwar\'s AI assistant <span class="dot" aria-hidden="true"></span></strong><span>Ask about her projects, skills or fit for your role</span>');
+  const bookBtn = el("a", { class: "icon", href: BOOKING_URL, target: "_blank", rel: "noopener noreferrer",
+    "aria-label": "Book a 20-minute intro call with Siwar", title: "Book a 20-min intro call" }, ICONS.calendar);
   const resetBtn = el("button", { class: "icon", type: "button", "aria-label": "New conversation", title: "New conversation" }, ICONS.reset);
   const closeBtn = el("button", { class: "icon", type: "button", "aria-label": "Close assistant", title: "Close" }, ICONS.close);
-  header.append(headerAv, title, resetBtn, closeBtn);
+  header.append(headerAv, title, bookBtn, resetBtn, closeBtn);
 
   const log = el("div", { class: "log", role: "log", "aria-live": "polite" });
   const form = el("form");

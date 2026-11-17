@@ -71,9 +71,14 @@
       "answer": "Yes, the Full-Stack CV can be downloaded from the portfolio (assets/siwar-msallem-cv-software-engineer.pdf)."
     },
     {
+      "id": "book-call",
+      "question": "Can I schedule a call with Siwar?",
+      "answer": "Yes. You can book a free 20-minute intro call directly in Siwar's calendar: [Book a 20-min intro call](https://cal.com/siwar-m-sellem-nhcfh6/intro-call). The video link is included in the confirmation."
+    },
+    {
       "id": "contact",
       "question": "How can I contact Siwar?",
-      "answer": "By email at siwarmsellem@gmail.com or on LinkedIn: linkedin.com/in/siwarmsellem."
+      "answer": "Book a 20-minute intro call: [Book a 20-min intro call](https://cal.com/siwar-m-sellem-nhcfh6/intro-call), or write to siwarmsellem@gmail.com, or reach out on LinkedIn: linkedin.com/in/siwarmsellem."
     }
   ]
 }
