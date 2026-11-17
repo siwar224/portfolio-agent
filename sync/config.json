@@ -1,0 +1,7 @@
+{
+  "_note": "Settings for scripts/sync-github.ts. Repos listed in 'exclude' are never read or proposed.",
+  "github_user": "siwar224",
+  "exclude": ["siwar224", "Kool", "TheMenuFy", "Devops_Project"],
+  "max_new_highlights_per_update": 3,
+  "readme_max_chars": 12000
+}

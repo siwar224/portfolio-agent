@@ -25,6 +25,12 @@ cp .env.example .env   # then fill in ANTHROPIC_API_KEY (needed from V1)
 | `npm run check:data` | Validates `data/*.json` (schemas, ids, cross-references) and lists what is still to fill in |
 | `npm run check` | Both of the above |
 
+## Self-updating knowledge base
+
+`npm run sync:github` reads the public repos of `github.com/siwar224`, finds what is new or changed since the last run (`sync/state.json`), asks Gemini for structured proposals (facts from the repo only), validates them with the same schemas as the agent, and writes `data/projects.json` plus a report in `sync/last-run.md`. Add `-- --dry-run` to only print the proposals.
+
+In CI, `.github/workflows/knowledge-sync.yml` runs every Monday (or from the Actions tab), then opens a **Pull Request to review**: nothing reaches the agent without a human merge. Settings in `sync/config.json` (excluded repos, limits). Private repos are never read.
+
 ## Deployment (Vercel)
 
 The agent is its own Vercel project. `api/chat.ts` is the only public endpoint (`POST /api/chat`, NDJSON stream).
