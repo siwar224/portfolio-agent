@@ -100,7 +100,18 @@ header .av { width:40px; height:40px; }
   padding:9px 12px; cursor:pointer; transition:border-color .15s, background .15s; }
 .chip:hover { border-color:var(--accent); background:var(--bg2); }
 
-form { display:flex; gap:8px; align-items:flex-end; padding:12px 12px 6px; border-top:1px solid var(--line); }
+.bookbar { display:flex; align-items:center; gap:10px; margin:0 12px; padding:9px 10px 9px 12px; border:1px solid var(--line);
+  border-radius:12px; background:var(--bg2); font-size:12.5px; color:var(--muted); }
+.bookbar span { flex:1; min-width:0; }
+.bookbar a { display:inline-flex; align-items:center; gap:6px; flex:none; padding:7px 11px; border-radius:9px; background:var(--accent);
+  color:var(--on-accent); font-weight:600; font-size:12.5px; text-decoration:none; }
+.bookbar a:hover { filter:brightness(1.08); }
+.bookbar svg { width:14px; height:14px; }
+.welcome-cta { display:inline-flex; align-items:center; gap:8px; margin-top:6px; padding:10px 14px; border-radius:12px; background:var(--accent);
+  color:var(--on-accent); font-weight:600; font-size:13.5px; text-decoration:none; align-self:flex-start; }
+.welcome-cta:hover { filter:brightness(1.08); }
+.welcome-cta svg { width:16px; height:16px; }
+form { display:flex; gap:8px; align-items:flex-end; padding:10px 12px 6px; }
 textarea { flex:1; resize:none; min-height:44px; max-height:140px; padding:11px 12px; border-radius:12px; border:1px solid var(--line);
   background:var(--bg2); color:var(--ink); font:inherit; font-size:14px; line-height:1.4; }
 textarea::placeholder { color:var(--muted); }
@@ -223,7 +234,7 @@ textarea::placeholder { color:var(--muted); }
   mascotBody.append(el("span", { class: "badge", "aria-hidden": "true" }, "AI"));
   mascot.append(mascotBody);
 
-  const nudge = el("div", { class: "nudge", hidden: true, role: "button", tabindex: "0" }, "Hi! I'm Siwar's AI assistant. Ask me about her projects or your role.");
+  const nudge = el("div", { class: "nudge", hidden: true, role: "button", tabindex: "0" }, "Hi! I'm Siwar's AI assistant. Ask me about her work, or book a 20-min call with her.");
 
   const panel = el("section", { class: "panel", id: "pa-panel", hidden: true, role: "dialog", "aria-label": "Siwar's AI assistant" });
   const header = el("header");
@@ -242,7 +253,11 @@ textarea::placeholder { color:var(--muted); }
   const sendBtn = el("button", { class: "send", type: "submit", "aria-label": "Send" }, ICONS.send);
   form.append(input, sendBtn);
   const note = el("p", { class: "note" }, "AI-generated answers can contain mistakes. Messages are processed by a third-party AI service; please don't share sensitive information.");
-  panel.append(header, log, form, note);
+  // Always-visible booking bar, right above the input.
+  const bookbar = el("div", { class: "bookbar" });
+  bookbar.append(el("span", {}, "Prefer to talk? Book a free 20-min call with Siwar."));
+  bookbar.append(el("a", { href: BOOKING_URL, target: "_blank", rel: "noopener noreferrer" }, `${ICONS.calendar}Book a call`));
+  panel.append(header, log, bookbar, form, note);
 
   root.append(nudge, panel, mascot, launcher);
 
@@ -286,6 +301,9 @@ textarea::placeholder { color:var(--muted); }
       }
       wrap.append(chips);
       log.append(wrap);
+      const cta = el("a", { class: "welcome-cta", href: BOOKING_URL, target: "_blank", rel: "noopener noreferrer" },
+        `${ICONS.calendar}<span>Book a 20-min intro call</span>`);
+      log.append(cta);
       return;
     }
     for (const m of messages) addBubble(m.role === "user" ? "user" : "bot", m.content);
