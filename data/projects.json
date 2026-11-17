@@ -879,6 +879,65 @@
       "good_for_roles": [
         "Frontend"
       ]
+    },
+    {
+      "id": "portfolio-agent",
+      "name": "Portfolio Agent - AI assistant for recruiters",
+      "category": [
+        "AI/ML",
+        "Developer Tools",
+        "Web Development"
+      ],
+      "featured": false,
+      "in_portfolio": false,
+      "period": "2026-11",
+      "context": "Personal project",
+      "pitch": "An AI agent that presents Siwar M'SALLEM's profile to recruiters, then records who really talked to it and where they came from.",
+      "problem": "Recruiters need an efficient and interactive way to explore Siwar's professional profile and get immediate answers to their questions.",
+      "solution": "An AI agent that provides dynamic, interactive access to Siwar's profile, offering a personalized and engaging experience for recruiters.",
+      "workflow": [
+        "The `npm run sync:github` script reads public repos from `github.com/siwar224`.",
+        "It identifies new or changed repositories since the last run.",
+        "Gemini is used to generate structured proposals based on repository facts.",
+        "Proposals are validated against the agent's schemas.",
+        "The script updates `data/projects.json` and generates a report.",
+        "A CI workflow runs weekly, creating a Pull Request for human review before changes are merged."
+      ],
+      "role": "Designed and built an AI agent to dynamically present a professional profile, including its self-updating knowledge base and chat functionality.",
+      "highlights": [
+        "Implemented a self-updating knowledge base with GitHub sync functionality for project data.",
+        "Developed a Vercel API integration featuring chat functionality and robust rate limiting.",
+        "Integrated Google Gemini and Anthropic providers to offer diverse AI chat capabilities.",
+        "Created a customizable Portfolio Agent widget with interactive chat functionality.",
+        "Enhanced data structure and validation for profile sections like experience, projects, and skills.",
+        "Added booking functionality and updated FAQs to enrich the AI assistant's utility."
+      ],
+      "stack": [
+        "TypeScript",
+        "JavaScript",
+        "HTML",
+        "Node.js",
+        "Vercel",
+        "Anthropic API",
+        "Google Gemini API",
+        "Upstash Redis"
+      ],
+      "results": [],
+      "links": {
+        "demo": "https://portfolio-agent-lake.vercel.app",
+        "repo": "https://github.com/siwar224/portfolio-agent",
+        "video": null
+      },
+      "portfolio": {
+        "page": null,
+        "anchor": null
+      },
+      "good_for_roles": [
+        "Software Engineer",
+        "AI Engineer",
+        "Full-stack Developer"
+      ],
+      "_todo": "Added automatically from GitHub: review the wording and add results if any."
     }
   ]
 }
