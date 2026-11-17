@@ -23,9 +23,17 @@ try {
 const PORT = Number(process.env["PORT"] ?? 8787);
 const PLAYGROUND = join(dirname(fileURLToPath(import.meta.url)), "..", "playground", "index.html");
 
+const PUBLIC_DIR = join(dirname(fileURLToPath(import.meta.url)), "..", "public");
+const STATIC_TYPES: Record<string, string> = {
+  ".js": "text/javascript; charset=utf-8",
+  ".webp": "image/webp",
+  ".png": "image/png",
+  ".html": "text/html; charset=utf-8",
+};
+
 const options = getChatOptions();
-// The playground itself is always allowed to call the API.
-const localOrigins = [`http://localhost:${PORT}`, `http://127.0.0.1:${PORT}`];
+// The playground and the portfolio's local dev server (port 4173) are always allowed locally.
+const localOrigins = [`http://localhost:${PORT}`, `http://127.0.0.1:${PORT}`, "http://localhost:4173", "http://127.0.0.1:4173"];
 const chatOptions = { ...options, allowedOrigins: [...new Set([...options.allowedOrigins, ...localOrigins])] };
 
 function sendJson(res: ServerResponse, status: number, body: unknown): void {
@@ -76,6 +84,18 @@ const server = createServer((req, res) => {
       sendJson(res, 200, { prompt, chars: prompt.length, approxTokens: Math.round(prompt.length / 4) });
     } catch (err) {
       sendJson(res, 500, { error: err instanceof Error ? err.message : String(err) });
+    }
+    return;
+  }
+  // Files from public/ (widget.js, avatars), as Vercel serves them in production.
+  const staticMatch = req.method === "GET" && /^\/[\w.-]+\.(js|webp|png|html)$/.exec(url.pathname);
+  if (staticMatch) {
+    try {
+      const file = readFileSync(join(PUBLIC_DIR, url.pathname.slice(1)));
+      res.writeHead(200, { "content-type": STATIC_TYPES[`.${staticMatch[1]}`] ?? "application/octet-stream", "cache-control": "no-store" });
+      res.end(file);
+    } catch {
+      sendJson(res, 404, { error: "Not found" });
     }
     return;
   }
