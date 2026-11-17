@@ -50,7 +50,9 @@ export function createProvider(env: NodeJS.ProcessEnv = process.env): ChatProvid
   }
   if (name === "anthropic") {
     if (!env["ANTHROPIC_API_KEY"] && !env["ANTHROPIC_AUTH_TOKEN"]) {
-      throw new Error("No API key: set GEMINI_API_KEY (free) or ANTHROPIC_API_KEY in .env, then restart.");
+      throw new Error(
+        "No API key: set GEMINI_API_KEY (free) or ANTHROPIC_API_KEY in .env locally, or in the Vercel project's environment variables, then restart or redeploy.",
+      );
     }
     return new AnthropicProvider(model);
   }
