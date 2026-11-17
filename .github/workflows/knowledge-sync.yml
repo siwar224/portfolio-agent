@@ -1,0 +1,53 @@
+name: Knowledge sync
+
+# Reads Siwar's public GitHub repos, proposes updates to data/projects.json with Gemini,
+# validates them, and opens a Pull Request for review. Nothing is merged automatically.
+on:
+  schedule:
+    - cron: "0 7 * * 1" # every Monday at 07:00 UTC
+  workflow_dispatch: {} # "Run workflow" button in the Actions tab
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: knowledge-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Propose updates from GitHub
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run sync:github
+
+      - name: Validate data (schemas, ids, references)
+        run: npm run check
+
+      - name: Open or update the review Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: knowledge-sync
+          delete-branch: true
+          title: "Knowledge update from GitHub"
+          body-path: sync/last-run.md
+          commit-message: "chore(data): knowledge sync from GitHub"
+          add-paths: |
+            data/projects.json
+            sync/state.json
+            sync/last-run.md
+          labels: knowledge-sync
