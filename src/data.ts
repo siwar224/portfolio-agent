@@ -1,9 +1,9 @@
-import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { z } from "zod";
+import * as files from "./knowledge-files.js";
 
-/** Absolute path of the data/ folder, independent of the current working directory. */
+/** Absolute path of the data/ folder (used by developer scripts only, not at runtime). */
 export const DATA_DIR = join(dirname(fileURLToPath(import.meta.url)), "..", "data");
 
 const str = z.string().min(1);
@@ -144,26 +144,26 @@ export interface Knowledge {
   agent: AgentConfig;
 }
 
-function readJson(file: string): unknown {
-  return JSON.parse(readFileSync(join(DATA_DIR, file), "utf8"));
-}
-
-function parse<T>(file: string, schema: z.ZodType<T>): T {
-  const result = schema.safeParse(readJson(file));
+function parse<T>(file: string, raw: unknown, schema: z.ZodType<T>): T {
+  const result = schema.safeParse(raw);
   if (!result.success) {
     throw new Error(`Invalid data/${file}:\n${z.prettifyError(result.error)}`);
   }
   return result.data;
 }
 
-/** Loads and validates every data file. Throws with a readable message on the first invalid file. */
+/**
+ * Validates every data file. The JSON is imported statically (see knowledge-files.ts) so that
+ * bundlers such as Vercel's include it with the function: no file system access at runtime.
+ * Throws with a readable message on the first invalid file.
+ */
 export function loadKnowledge(): Knowledge {
   return {
-    profile: parse("profile.json", ProfileSchema),
-    experience: parse("experience.json", ExperienceSchema).experience,
-    projects: parse("projects.json", ProjectsSchema).projects,
-    skills: parse("skills.json", SkillsSchema).groups,
-    faq: parse("faq.json", FaqSchema).faq,
-    agent: parse("agent.json", AgentConfigSchema),
+    profile: parse("profile.json", files.profile, ProfileSchema),
+    experience: parse("experience.json", files.experience, ExperienceSchema).experience,
+    projects: parse("projects.json", files.projects, ProjectsSchema).projects,
+    skills: parse("skills.json", files.skills, SkillsSchema).groups,
+    faq: parse("faq.json", files.faq, FaqSchema).faq,
+    agent: parse("agent.json", files.agent, AgentConfigSchema),
   };
 }

@@ -25,9 +25,12 @@ export const ChatRequestSchema = z.object({
 });
 export type ChatRequest = z.infer<typeof ChatRequestSchema>;
 
+let cachedPrompt: string | undefined;
+
+/** The system prompt, built once per process (the dev server restarts itself when data/ changes). */
 export function getSystemPrompt(): string {
-  // Reloaded on each call so edits to data/ show up without restarting the dev server.
-  return buildSystemPrompt(loadKnowledge());
+  cachedPrompt ??= buildSystemPrompt(loadKnowledge());
+  return cachedPrompt;
 }
 
 /**

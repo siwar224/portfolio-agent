@@ -1,16 +1,18 @@
 /**
  * Local test server (development only, not deployed).
- *   GET  /                -> playground/index.html
- *   POST /api/chat        -> streams the agent's answer as NDJSON events
- *   GET  /api/debug/prompt -> the generated system prompt (local debugging)
+ *   GET  /                 -> playground/index.html
+ *   POST /api/chat         -> the same handler as the Vercel function (CORS, rate limits, streaming)
+ *   GET  /api/config       -> provider/model in use (local only)
+ *   GET  /api/debug/prompt -> the generated system prompt (local only)
  */
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
+import { Readable } from "node:stream";
 import { fileURLToPath } from "node:url";
-import { z } from "zod";
-import { ChatRequestSchema, createProvider, getSystemPrompt, ProviderError, streamChat } from "../src/agent.js";
-import type { ChatProvider } from "../src/providers/types.js";
+import { getSystemPrompt } from "../src/agent.js";
+import { handleChatRequest } from "../src/server/chat-handler.js";
+import { getChatOptions } from "../src/server/context.js";
 
 try {
   process.loadEnvFile(join(dirname(fileURLToPath(import.meta.url)), "..", ".env"));
@@ -20,66 +22,39 @@ try {
 
 const PORT = Number(process.env["PORT"] ?? 8787);
 const PLAYGROUND = join(dirname(fileURLToPath(import.meta.url)), "..", "playground", "index.html");
-const MAX_BODY = 200_000;
+
+const options = getChatOptions();
+// The playground itself is always allowed to call the API.
+const localOrigins = [`http://localhost:${PORT}`, `http://127.0.0.1:${PORT}`];
+const chatOptions = { ...options, allowedOrigins: [...new Set([...options.allowedOrigins, ...localOrigins])] };
 
 function sendJson(res: ServerResponse, status: number, body: unknown): void {
   res.writeHead(status, { "content-type": "application/json; charset=utf-8" });
   res.end(JSON.stringify(body));
 }
 
-async function readBody(req: IncomingMessage): Promise<string> {
-  let size = 0;
-  const chunks: Buffer[] = [];
-  for await (const chunk of req) {
-    size += (chunk as Buffer).length;
-    if (size > MAX_BODY) throw new Error("Request body too large");
-    chunks.push(chunk as Buffer);
+/** Bridges Node's http request/response to the Web standard handler used on Vercel. */
+async function toWebHandler(req: IncomingMessage, res: ServerResponse, url: URL): Promise<void> {
+  const headers = new Headers();
+  for (const [name, value] of Object.entries(req.headers)) {
+    if (typeof value === "string") headers.set(name, value);
+    else if (Array.isArray(value)) headers.set(name, value.join(", "));
   }
-  return Buffer.concat(chunks).toString("utf8");
-}
+  if (!headers.has("x-forwarded-for")) headers.set("x-forwarded-for", req.socket.remoteAddress ?? "local");
 
-function errorMessage(err: unknown): string {
-  if (err instanceof ProviderError) return err.message;
-  if (err instanceof Error) return err.message;
-  return "Unknown error";
-}
+  const hasBody = req.method !== "GET" && req.method !== "HEAD" && req.method !== "OPTIONS";
+  const request = new Request(url, {
+    method: req.method,
+    headers,
+    body: hasBody ? (Readable.toWeb(req) as ReadableStream<Uint8Array>) : undefined,
+    // Required by Node when streaming a request body.
+    ...(hasBody ? { duplex: "half" } : {}),
+  } as RequestInit);
 
-async function handleChat(req: IncomingMessage, res: ServerResponse): Promise<void> {
-  if (!provider) {
-    sendJson(res, 500, { error: providerError });
-    return;
-  }
-
-  let parsed;
-  try {
-    parsed = ChatRequestSchema.safeParse(JSON.parse(await readBody(req)));
-  } catch (err) {
-    sendJson(res, 400, { error: errorMessage(err) });
-    return;
-  }
-  if (!parsed.success) {
-    sendJson(res, 400, { error: z.prettifyError(parsed.error) });
-    return;
-  }
-
-  res.writeHead(200, { "content-type": "application/x-ndjson; charset=utf-8", "cache-control": "no-store" });
-  try {
-    for await (const event of streamChat(provider, parsed.data)) {
-      res.write(JSON.stringify(event) + "\n");
-    }
-  } catch (err) {
-    console.error(err);
-    res.write(JSON.stringify({ type: "error", message: errorMessage(err) }) + "\n");
-  }
-  res.end();
-}
-
-let provider: ChatProvider | null = null;
-let providerError = "";
-try {
-  provider = createProvider();
-} catch (err) {
-  providerError = errorMessage(err);
+  const response = await handleChatRequest(request, chatOptions);
+  res.writeHead(response.status, Object.fromEntries(response.headers));
+  if (response.body) Readable.fromWeb(response.body as import("node:stream/web").ReadableStream).pipe(res);
+  else res.end();
 }
 
 const server = createServer((req, res) => {
@@ -91,9 +66,8 @@ const server = createServer((req, res) => {
     return;
   }
   if (req.method === "GET" && url.pathname === "/api/config") {
-    sendJson(res, 200, provider
-      ? { ready: true, provider: provider.name, model: provider.model }
-      : { ready: false, error: providerError });
+    const p = chatOptions.provider;
+    sendJson(res, 200, p ? { ready: true, provider: p.name, model: p.model } : { ready: false, error: chatOptions.providerError });
     return;
   }
   if (req.method === "GET" && url.pathname === "/api/debug/prompt") {
@@ -101,19 +75,25 @@ const server = createServer((req, res) => {
       const prompt = getSystemPrompt();
       sendJson(res, 200, { prompt, chars: prompt.length, approxTokens: Math.round(prompt.length / 4) });
     } catch (err) {
-      sendJson(res, 500, { error: errorMessage(err) });
+      sendJson(res, 500, { error: err instanceof Error ? err.message : String(err) });
     }
     return;
   }
-  if (req.method === "POST" && url.pathname === "/api/chat") {
-    void handleChat(req, res);
+  if (url.pathname === "/api/chat") {
+    toWebHandler(req, res, url).catch((err) => {
+      console.error(err);
+      if (!res.headersSent) sendJson(res, 500, { error: "Internal error" });
+      else res.end();
+    });
     return;
   }
   sendJson(res, 404, { error: "Not found" });
 });
 
 server.listen(PORT, () => {
+  const p = chatOptions.provider;
   console.log(`Playground: http://localhost:${PORT}`);
-  if (provider) console.log(`Provider: ${provider.name} · model: ${provider.model}`);
-  else console.warn(`Warning: ${providerError}`);
+  console.log(p ? `Provider: ${p.name} · model: ${p.model}` : `Warning: ${chatOptions.providerError}`);
+  console.log(`Allowed origins: ${chatOptions.allowedOrigins.join(", ")}`);
+  console.log(`Limits: ${JSON.stringify(chatOptions.limits)}`);
 });
