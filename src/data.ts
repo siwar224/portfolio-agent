@@ -93,6 +93,8 @@ export const ProjectSchema = z.object({
   links: z.record(z.string(), z.string().nullable()),
   portfolio: z.object({ page: str.nullable(), anchor: str.nullable() }),
   good_for_roles: strList,
+  /** "github-sync" = added by scripts/sync-github.ts; the portfolio's card sync only picks these. */
+  source: z.enum(["manual", "github-sync"]).optional(),
   _todo: str.optional(),
 });
 
