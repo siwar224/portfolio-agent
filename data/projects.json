@@ -762,7 +762,10 @@
       "role": "Designed and building solo.",
       "highlights": [
         "Project structured for evaluation from the start: source documents, metadata manifest and a gold Q&A set (rag_questions_gold.jsonl).",
-        "Quality tooling: ruff linting and pytest."
+        "Quality tooling: ruff linting and pytest.",
+        "Answers HR questions with traceable sources, refusing to guess, and applies version awareness to exclude archived policies.",
+        "Processes PDF, DOCX, and CSV documents through a pipeline of parsing, chunking, embedding with BAAI/bge-m3, and indexing into Qdrant.",
+        "Generates grounded answers using a local Qwen 2.5 LLM via llama.cpp, ensuring strict JSON output and validating citations against provided context."
       ],
       "stack": [
         "Python 3.11",
@@ -770,7 +773,15 @@
         "Uvicorn",
         "RAG",
         "ruff",
-        "pytest"
+        "pytest",
+        "Pydantic v2",
+        "pdfplumber",
+        "python-docx",
+        "BAAI/bge-m3",
+        "sentence-transformers",
+        "Qdrant",
+        "Qwen 2.5",
+        "llama.cpp"
       ],
       "results": [],
       "links": {
@@ -785,8 +796,7 @@
       "good_for_roles": [
         "AI Engineer",
         "Python backend"
-      ],
-      "_todo": "Early-stage repo: complete the description once the RAG pipeline (embeddings, vector store, LLM) is implemented."
+      ]
     },
     {
       "id": "ecoevents",
@@ -868,7 +878,8 @@
         "Lenis",
         "Node.js",
         "Vercel",
-        "GitHub Actions"
+        "GitHub Actions",
+        "Claude"
       ],
       "results": [],
       "links": {
@@ -894,6 +905,7 @@
       ],
       "featured": false,
       "in_portfolio": false,
+      "status": "Deployed",
       "period": "2026-11",
       "context": "Personal project",
       "pitch": "An AI agent that presents Siwar M'SALLEM's profile to recruiters, then records who really talked to it and where they came from.",
@@ -917,7 +929,10 @@
         "Added booking functionality and updated FAQs to enrich the AI assistant's utility.",
         "Implemented a human-in-the-loop review process for knowledge base updates, requiring manual merge via Pull Request.",
         "Utilized Upstash Redis to implement distributed rate limiting, ensuring consistent abuse and quota protection across instances.",
-        "Configured API access to allow calls only from specified origins, enhancing security."
+        "Configured API access to allow calls only from specified origins, enhancing security.",
+        "Utilizes Google Gemini to generate structured proposals for knowledge base updates from GitHub repository data.",
+        "Implemented prompt caching to optimize AI agent responses.",
+        "Developed a refusal fallback mechanism for the AI agent to handle inappropriate queries."
       ],
       "stack": [
         "TypeScript",
@@ -956,7 +971,7 @@
       ],
       "featured": false,
       "in_portfolio": false,
-      "status": "In progress",
+      "status": "Released",
       "period": "2026-11",
       "context": "Personal project",
       "pitch": "A website for an Italian restaurant, featuring a scroll-driven story, a build-your-own plate studio, and an interactive booking experience.",
@@ -977,7 +992,10 @@
         "Created a real-time booking experience ('Prenota') with a dynamic table setting, spiral time dial, and an interactive floor plan for table selection.",
         "Ensured accessibility with full keyboard support, visible focus, 44 px touch targets, WCAG AA contrast, and `prefers-reduced-motion` respected.",
         "Utilized Next.js 15 App Router with static rendering, React 19, and TypeScript for a robust and performant application.",
-        "Integrated GSAP 3 (ScrollTrigger, SplitText) and Lenis for advanced scroll-driven animations and smooth scrolling."
+        "Integrated GSAP 3 (ScrollTrigger, SplitText) and Lenis for advanced scroll-driven animations and smooth scrolling.",
+        "Implemented comprehensive booking management, allowing guests to look up, modify pre-orders, or cancel reservations, and integrated a waiting list system that notifies guests when tables become available.",
+        "Developed a dedicated \"La sala\" service view for restaurant staff, displaying real-time table status, guest details, occasions, and pre-ordered dishes, alongside the waiting list.",
+        "Established a robust CI/CD pipeline with over 130 unit and integration tests (Vitest), end-to-end testing (Playwright), preview environments, and Docker packaging for reliable releases."
       ],
       "stack": [
         "Next.js 15",
@@ -989,7 +1007,15 @@
         "Node.js",
         "HTML",
         "CSS",
-        "JavaScript"
+        "JavaScript",
+        "PostgreSQL",
+        "Neon",
+        "Resend",
+        "Vitest",
+        "Playwright",
+        "GitHub Actions",
+        "Docker",
+        "GitHub Packages"
       ],
       "results": [],
       "links": {
@@ -1007,8 +1033,7 @@
         "Animation Developer",
         "Full-stack Developer"
       ],
-      "source": "github-sync",
-      "_todo": "Added automatically from GitHub: review the wording and add results if any."
+      "source": "github-sync"
     },
     {
       "id": "velours",
@@ -1143,6 +1168,63 @@
         "UI/UX Engineer",
         "Full-stack Developer (Frontend focus)",
         "Web Animator"
+      ],
+      "source": "github-sync",
+      "_todo": "Added automatically from GitHub: review the wording and add results if any."
+    },
+    {
+      "id": "gira-whatsapp-agent",
+      "name": "GIRA WhatsApp Agent - Automated customer service and booking",
+      "category": [
+        "Customer Service",
+        "AI/ML",
+        "Chatbot",
+        "Automation"
+      ],
+      "featured": false,
+      "in_portfolio": false,
+      "period": "2026-11",
+      "context": "Personal project",
+      "pitch": "An AI-powered WhatsApp agent for GIRA — Pasta & Mare, designed to automate customer inquiries and manage table bookings.",
+      "problem": "Restaurants often face high volumes of customer inquiries and booking requests via WhatsApp, requiring constant staff attention and potentially leading to delayed responses or missed opportunities.",
+      "solution": "The GIRA WhatsApp Agent automates responses to common customer questions and handles table bookings, cancellations, and waiting list management, freeing up staff and ensuring timely customer interaction.",
+      "workflow": [
+        "Customer sends a message to the restaurant's WhatsApp number.",
+        "The agent waits for a configurable delay (e.g., 30 minutes) for a team member to reply.",
+        "If no team reply, the agent answers in the customer's language.",
+        "For bookings or cancellations, the agent summarizes and asks for explicit confirmation.",
+        "If a customer requests to talk to a person or complains, the agent hands over by staying quiet and dropping a note to the restaurant.",
+        "Scheduled maintenance runs process delayed replies every 5 minutes."
+      ],
+      "role": "Designed and built a WhatsApp agent to automate customer interactions and booking management for a restaurant, including integration with an existing booking API.",
+      "highlights": [
+        "Developed an AI-powered WhatsApp agent to handle customer inquiries and manage table bookings for a restaurant.",
+        "Implemented a delayed response mechanism, allowing the restaurant team to answer first before the agent intervenes.",
+        "Integrated with the GIRA website's booking API to facilitate real-time table reservations, cancellations, and waiting list additions.",
+        "Configured the agent to reply in the customer's language and to handle booking confirmations with explicit user consent.",
+        "Designed a handover mechanism for complex queries or complaints, notifying staff and pausing agent interaction.",
+        "Enabled dynamic configuration of reply delay, agent status, and GIRA URL without requiring redeployment."
+      ],
+      "stack": [
+        "Python",
+        "CodeWords",
+        "Claude Sonnet 4.6"
+      ],
+      "results": [],
+      "links": {
+        "demo": null,
+        "repo": "https://github.com/siwar224/gira-whatsapp-agent",
+        "video": null
+      },
+      "portfolio": {
+        "page": null,
+        "anchor": null
+      },
+      "good_for_roles": [
+        "Software Engineer",
+        "AI Engineer",
+        "Backend Developer",
+        "Chatbot Developer"
       ],
       "source": "github-sync",
       "_todo": "Added automatically from GitHub: review the wording and add results if any."

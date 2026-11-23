@@ -1,18 +1,18 @@
 {
   "portfolio-agent": {
-    "sha": "89afba36d4ceec449bd74e86bad46531a57df35a",
-    "pushed_at": "2026-11-17T12:42:07Z",
-    "processed_at": "2026-11-17T12:46:04.635Z"
+    "sha": "95bd70252fdb7b75e4a7ea24c62b8fdaf6b047f4",
+    "pushed_at": "2026-11-17T12:49:00Z",
+    "processed_at": "2026-11-23T18:53:30.744Z"
   },
   "portfolio": {
-    "sha": "4ce9363a790943e2ba312e2c677a33bfbfef5856",
-    "pushed_at": "2026-11-17T12:40:14Z",
-    "processed_at": "2026-11-17T12:46:12.026Z"
+    "sha": "d2fb086d443c1c4d537e59abf5f2a318fa8e0e61",
+    "pushed_at": "2026-11-17T13:16:42Z",
+    "processed_at": "2026-11-23T18:53:20.324Z"
   },
   "peopleknowledge-ai": {
-    "sha": "",
-    "pushed_at": "2026-11-16T15:45:05Z",
-    "processed_at": "2026-11-17T12:24:59.446Z"
+    "sha": "71c1f12d35292e5fc4c8f537b8fca2c011467881",
+    "pushed_at": "2026-11-18T15:18:42Z",
+    "processed_at": "2026-11-23T18:53:09.355Z"
   },
   "Specora-AI": {
     "sha": "",
@@ -40,9 +40,9 @@
     "processed_at": "2026-11-17T12:24:59.446Z"
   },
   "GIRA": {
-    "sha": "62cd2a6cb3517e12b3b5f88d90c9f46087f9f0b6",
-    "pushed_at": "2026-11-13T20:11:59Z",
-    "processed_at": "2026-11-17T12:46:18.446Z"
+    "sha": "53340608fb12d6132a783b2f7ffdb7c3e9552330",
+    "pushed_at": "2026-11-19T13:24:34Z",
+    "processed_at": "2026-11-23T18:52:57.459Z"
   },
   "VELOURS": {
     "sha": "8ab00736c39a292df6ebc2d07ac6150910d319f1",
@@ -53,5 +53,10 @@
     "sha": "51f8526e6a4b0d575c57c933022b271ec665b4a5",
     "pushed_at": "2026-11-11T15:55:52Z",
     "processed_at": "2026-11-17T12:46:36.441Z"
+  },
+  "gira-whatsapp-agent": {
+    "sha": "37d56c8c4be9d50307e6ca2e4e11eccd9b1fea4f",
+    "pushed_at": "2026-11-21T10:55:58Z",
+    "processed_at": "2026-11-23T18:52:42.175Z"
   }
 }
